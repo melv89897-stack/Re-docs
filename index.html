@@ -94,8 +94,8 @@ body { padding-inline: 0; }
 }
 .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
 .btn-outline:hover { border-color: #2d7a45; color: #2d7a45; }
-.btn-gold { background: #2d7a45; color: #111810; font-weight: 700; }
-.btn-gold:hover { filter: brightness(1.08); }
+.btn-gold { background: #1a5c2e; color: #fff; font-weight: 700; border-color: #1a5c2e; }
+.btn-gold:hover { background: #133f20; border-color: #133f20; }
 .btn-navy { background: #1a5c2e; color: #fff; }
 .btn-navy:hover { background: #133f20; }
 .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
@@ -114,15 +114,15 @@ body { padding-inline: 0; }
 .land-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 60% 40%, rgba(46,204,142,.08) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 60% 40%, rgba(26,92,46,.12) 0%, transparent 65%);
   pointer-events: none;
 }
 .land-tag {
   display: inline-block;
   font-family: 'Rajdhani', sans-serif;
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: #2d7a45; background: rgba(46,204,142,.1);
-  border: 1px solid rgba(46,204,142,.3);
+  color: #2d7a45; background: rgba(26,92,46,.15);
+  border: 1px solid rgba(45,122,69,.4);
   border-radius: 20px; padding: 4px 14px; margin-bottom: 22px;
 }
 .land-h1 {
@@ -134,7 +134,7 @@ body { padding-inline: 0; }
   text-wrap: balance;
   margin: 0 0 16px;
 }
-.land-h1 span { color: #2d7a45; }
+.land-h1 span { color: #8ab89a; }
 .land-sub {
   font-size: clamp(14px, 2vw, 17px);
   color: rgba(255,255,255,.65);
@@ -532,7 +532,7 @@ input:focus { border-color: var(--navy); }
 }
 .role-card:hover {
   border-color: #2d7a45;
-  box-shadow: 0 4px 20px rgba(46,204,142,.2);
+  box-shadow: 0 4px 20px rgba(45,122,69,.25);
   transform: translateY(-2px);
 }
 .role-icon { font-size: 32px; margin-bottom: 10px; }
@@ -601,11 +601,11 @@ input:focus { border-color: var(--navy); }
     </div>
     <!-- Annual -->
     <div class="price-card featured" style="position:relative;min-width:200px;border-color:var(--accent2);background:linear-gradient(135deg,var(--gold-lt),#fff)">
-      <div class="price-badge" style="background:var(--accent2);color:#fff">BEST VALUE</div>
+      <div class="price-badge" style="background:#1a5c2e;color:#fff">BEST VALUE</div>
       <div class="price-num" style="color:var(--accent2)">$29.99</div>
       <div class="price-period">/ year</div>
       <div class="price-label" style="color:var(--text2)">All 10 Docs — Save $210 vs Monthly</div>
-      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:var(--accent2);border-color:var(--accent2)" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
+      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:#1a5c2e;border-color:#1a5c2e" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
     </div>
     <!-- What's included -->
     <div class="price-card" style="text-align:left;max-width:260px;min-width:200px">
@@ -1105,14 +1105,14 @@ input:focus { border-color: var(--navy); }
       <button class="btn btn-navy btn-full" onclick="confirmSubscribe('monthly')">Subscribe Monthly — $19.99/mo →</button>
     </div>
     <!-- Annual -->
-    <div style="background:linear-gradient(135deg,#fff8ee,#fff);border:2px solid var(--accent2);border-radius:12px;padding:16px;margin-bottom:16px;text-align:left;position:relative">
+    <div style="background:linear-gradient(135deg,#e8f3ec,#fff);border:2px solid var(--accent2);border-radius:12px;padding:16px;margin-bottom:16px;text-align:left;position:relative">
       <div style="position:absolute;top:-10px;right:14px;background:var(--accent2);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.05em">BEST VALUE</div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
         <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--accent2)">Annual</div>
         <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--accent2)">$29.99<span style="font-size:12px;font-weight:400;color:var(--text3)">/yr</span></div>
       </div>
       <div style="font-size:12px;color:var(--text2);margin-bottom:12px">All 10 docs for a full year — saves you <strong>$210</strong> vs monthly.</div>
-      <button class="btn btn-gold btn-full" style="background:var(--accent2);border-color:var(--accent2)" onclick="confirmSubscribe('annual')">Subscribe Annual — $29.99/yr →</button>
+      <button class="btn btn-gold btn-full" style="background:#1a5c2e;border-color:#1a5c2e" onclick="confirmSubscribe('annual')">Subscribe Annual — $29.99/yr →</button>
     </div>
 
     <div class="modal-cancel" onclick="closeModal()">Cancel — go back</div>
@@ -1508,7 +1508,7 @@ function renderCalendar() {
     const daysLeft = msLeft / (1000 * 60 * 60 * 24);
     if (daysLeft < 0)   return { bg: '#fdeaea', border: '#e05b5b', badge: '#e05b5b', label: 'OVERDUE', textColor: '#c0392b' };
     if (daysLeft <= 3)  return { bg: '#fff4e0', border: '#2d7a45', badge: '#2d7a45', label: 'DUE SOON', textColor: '#b7770a' };
-    if (daysLeft <= 7)  return { bg: '#fffbe6', border: '#f0c040', badge: '#f0c040', label: 'THIS WEEK', textColor: '#8a6800' };
+    if (daysLeft <= 7)  return { bg: '#fffbe6', border: '#2d7a45', badge: '#2d7a45', label: 'THIS WEEK', textColor: '#8a6800' };
     return { bg: 'var(--surface)', border: 'var(--border)', badge: 'var(--navy)', label: '', textColor: 'var(--text2)' };
   }
 
@@ -1577,7 +1577,7 @@ function renderCalendar() {
     <div style="margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px">
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e05b5b;display:inline-block"></span>Overdue</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#2d7a45;display:inline-block"></span>Due soon (≤3 days)</span>
-      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#f0c040;display:inline-block"></span>This week</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#2d7a45;display:inline-block"></span>This week</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:var(--navy);display:inline-block"></span>On track</span>
     </div>`;
 }
@@ -1609,7 +1609,7 @@ function printCalendar() {
       .card .note{font-size:11px;color:#555;line-height:1.5}
       .overdue{background:#fdeaea;border-color:#e05b5b}
       .soon{background:#fff4e0;border-color:#2d7a45}
-      .week{background:#fffbe6;border-color:#f0c040}
+      .week{background:#fffbe6;border-color:#2d7a45}
       .timeline{margin-top:20px;padding-top:16px;border-top:1px solid #ccc;font-size:12px;color:#555}
       @media print{.no-print{display:none!important}}
     </style>
