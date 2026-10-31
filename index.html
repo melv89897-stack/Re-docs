@@ -83,7 +83,7 @@ body { padding-inline: 0; }
   color: #fff;
   letter-spacing: .5px;
 }
-.land-logo span { color: #2ecc8e; }
+.land-logo span { color: #00c896; }
 .land-nav-btns { display: flex; gap: 10px; }
 .btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -93,11 +93,11 @@ body { padding-inline: 0; }
   text-decoration: none;
 }
 .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
-.btn-outline:hover { border-color: #2ecc8e; color: #2ecc8e; }
-.btn-gold { background: #2ecc8e; color: #0f2622; font-weight: 700; }
+.btn-outline:hover { border-color: #00c896; color: #00c896; }
+.btn-gold { background: #00c896; color: #0a2920; font-weight: 700; }
 .btn-gold:hover { filter: brightness(1.08); }
-.btn-navy { background: #1e6e5e; color: #fff; }
-.btn-navy:hover { background: #154d42; }
+.btn-navy { background: #0ea47a; color: #fff; }
+.btn-navy:hover { background: #0b8a65; }
 .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-ghost:hover { border-color: var(--navy); }
 .btn-sm { padding: 7px 14px; font-size: 13px; }
@@ -105,7 +105,7 @@ body { padding-inline: 0; }
 .btn-full { width: 100%; justify-content: center; }
 
 .land-hero {
-  background: linear-gradient(160deg, #152921 0%, #0f2622 60%, #1a3a30 100%);
+  background: linear-gradient(160deg, #063324 0%, #0a2920 60%, #1a3a30 100%);
   padding: 80px 40px 72px;
   text-align: center;
   position: relative;
@@ -121,7 +121,7 @@ body { padding-inline: 0; }
   display: inline-block;
   font-family: 'Rajdhani', sans-serif;
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: #2ecc8e; background: rgba(46,204,142,.1);
+  color: #00c896; background: rgba(46,204,142,.1);
   border: 1px solid rgba(46,204,142,.3);
   border-radius: 20px; padding: 4px 14px; margin-bottom: 22px;
 }
@@ -134,7 +134,7 @@ body { padding-inline: 0; }
   text-wrap: balance;
   margin: 0 0 16px;
 }
-.land-h1 span { color: #2ecc8e; }
+.land-h1 span { color: #00c896; }
 .land-sub {
   font-size: clamp(14px, 2vw, 17px);
   color: rgba(255,255,255,.65);
@@ -369,7 +369,7 @@ input:focus { border-color: var(--navy); }
 .app-topbar {
   position: sticky;
   top: env(safe-area-inset-top, 0);
-  background: #152921;
+  background: #063324;
   border-bottom: 1px solid rgba(46,204,142,.18);
   display: flex; align-items: center;
   padding: 0 24px;
@@ -379,7 +379,7 @@ input:focus { border-color: var(--navy); }
   font-family: 'Rajdhani', sans-serif;
   font-size: 19px; font-weight: 700; color: #fff;
 }
-.app-logo span { color: #2ecc8e; }
+.app-logo span { color: #00c896; }
 .app-topbar-space { flex: 1; }
 .app-user { font-size: 12px; color: rgba(255,255,255,.4); }
 .app-logout { font-size: 12px; color: rgba(255,255,255,.35); cursor: pointer; padding: 4px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,.12); background: transparent; font-family: inherit; }
@@ -531,7 +531,7 @@ input:focus { border-color: var(--navy); }
   transition: border-color .2s, box-shadow .2s, transform .15s;
 }
 .role-card:hover {
-  border-color: #2ecc8e;
+  border-color: #00c896;
   box-shadow: 0 4px 20px rgba(46,204,142,.2);
   transform: translateY(-2px);
 }
@@ -679,7 +679,7 @@ input:focus { border-color: var(--navy); }
       </div>
     </div>
     <!-- Market Ticker -->
-    <div style="background:#0f2622;color:#fff;padding:7px max(16px,env(safe-area-inset-left,0px));display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;white-space:nowrap;letter-spacing:0.04em">
+    <div style="background:#0a2920;color:#fff;padding:7px max(16px,env(safe-area-inset-left,0px));display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;white-space:nowrap;letter-spacing:0.04em">
       <span style="color:rgba(255,255,255,0.5)">30-YR FIXED</span><span>6.82%</span><span style="color:#5ec87a">▲ 0.04</span>
       <span style="color:rgba(255,255,255,0.5)">MEDIAN PRICE</span><span>$412,000</span><span style="color:#5ec87a">▲ 2.1%</span>
       <span style="color:rgba(255,255,255,0.5)">DAYS ON MARKET</span><span>34</span>
@@ -755,7 +755,7 @@ input:focus { border-color: var(--navy); }
     <div style="font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:8px">Get the RE Docs Times Weekly</div>
     <p style="font-size:14px;font-style:italic;color:rgba(255,255,255,0.75);margin:0 auto 24px;max-width:480px;font-family:'Inter',sans-serif">Market insights, document guides, and exclusive resources — delivered every Friday.</p>
     <form id="nl-form" onsubmit="submitNewsletter(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-      <input type="email" id="nl-email" placeholder="Your email address" required style="flex:1;min-width:200px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;border:none;background:#fff;color:#0f2622;outline:none">
+      <input type="email" id="nl-email" placeholder="Your email address" required style="flex:1;min-width:200px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;border:none;background:#fff;color:#0a2920;outline:none">
       <button type="submit" style="padding:11px 22px;background:var(--accent2);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Subscribe Free</button>
     </form>
     <div id="nl-confirm" style="display:none;font-size:15px;font-style:italic;color:rgba(255,255,255,0.9);margin-top:16px;font-family:'Rajdhani',sans-serif">✓ You're subscribed. Welcome to the RE Docs Times.</div>
@@ -957,7 +957,7 @@ input:focus { border-color: var(--navy); }
 
     <!-- ── TAB NAV ── -->
     <div style="display:flex;gap:4px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:0">
-      <button id="tab-deal" onclick="switchTab('deal')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:#2ecc8e;border-bottom:3px solid #2ecc8e;margin-bottom:-2px">🏠 Deal Setup</button>
+      <button id="tab-deal" onclick="switchTab('deal')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:#00c896;border-bottom:3px solid #00c896;margin-bottom:-2px">🏠 Deal Setup</button>
       <button id="tab-docs" onclick="switchTab('docs')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📄 Documents</button>
       <button id="tab-calendar" onclick="switchTab('calendar')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📅 Deadlines</button>
     </div>
@@ -1450,8 +1450,8 @@ function switchTab(tab) {
     const btn = document.getElementById('tab-' + t);
     if (!btn) return;
     const active = t === tab;
-    btn.style.color       = active ? '#2ecc8e' : 'var(--text3)';
-    btn.style.borderBottom = active ? '3px solid #2ecc8e' : '3px solid transparent';
+    btn.style.color       = active ? '#00c896' : 'var(--text3)';
+    btn.style.borderBottom = active ? '3px solid #00c896' : '3px solid transparent';
   });
   if (tab === 'calendar') renderCalendar();
 }
@@ -1604,7 +1604,7 @@ function printCalendar() {
       .card{border:1.5px solid #ccc;border-radius:8px;padding:12px;page-break-inside:avoid}
       .card .icon{font-size:20px;margin-bottom:6px}
       .card .name{font-weight:700;font-size:13px;margin-bottom:4px}
-      .card .date{font-size:12px;font-weight:700;color:#2A7C6F;margin-bottom:3px}
+      .card .date{font-size:12px;font-weight:700;color:#0b8a65;margin-bottom:3px}
       .card .timing{font-size:11px;color:#888;margin-bottom:5px}
       .card .note{font-size:11px;color:#555;line-height:1.5}
       .overdue{background:#fdeaea;border-color:#e05b5b}
@@ -1619,7 +1619,7 @@ function printCalendar() {
     <div class="grid">${grid.innerHTML}</div>
     <div class="timeline">${tline.innerHTML}</div>
     <div class="no-print" style="margin-top:24px;text-align:center">
-      <button onclick="window.print()" style="padding:10px 28px;font-size:14px;background:#2A7C6F;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨️ Print</button>
+      <button onclick="window.print()" style="padding:10px 28px;font-size:14px;background:#0b8a65;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨️ Print</button>
     </div>
   </body></html>`);
   win.document.close();
@@ -1777,7 +1777,7 @@ function getPasswordStrength(pw) {
   if (/[0-9]/.test(pw)) score++;
   if (/[^A-Za-z0-9]/.test(pw)) score++;
   const label = score <= 1 ? 'Weak' : score <= 3 ? 'Fair' : 'Strong';
-  const color = score <= 1 ? '#e05b5b' : score <= 3 ? '#E9A84C' : '#2A7C6F';
+  const color = score <= 1 ? '#e05b5b' : score <= 3 ? '#E9A84C' : '#0b8a65';
   const pct = Math.min(100, score * 20) + '%';
   return { score, label, color, pct };
 }
@@ -1801,7 +1801,7 @@ function checkConfirm() {
   const lbl = document.getElementById('pw-match-label');
   if (!pw2) { lbl.style.display = 'none'; return; }
   lbl.style.display = 'block';
-  if (pw === pw2) { lbl.textContent = '✓ Passwords match'; lbl.style.color = '#2A7C6F'; }
+  if (pw === pw2) { lbl.textContent = '✓ Passwords match'; lbl.style.color = '#0b8a65'; }
   else { lbl.textContent = '✗ Passwords do not match'; lbl.style.color = '#e05b5b'; }
 }
 function togglePw(inputId, btn) {
@@ -1884,7 +1884,7 @@ const ROLE_DASHBOARDS = {
     label: "Buyer's Agent",
     icon: '🏡',
     tagline: "Represent buyers from offer to close — docs, deadlines, and commissions in one place.",
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['buyer_rep','psa','referral','commission_agr'],
     equations: [
       { label: 'Max Offer Price', formula: 'Pre-Approval Limit − Closing Costs − Down Payment', example: '$500K − $10K − $25K = $465K max offer' },
@@ -1906,7 +1906,7 @@ const ROLE_DASHBOARDS = {
 
   listing_agent: {
     label: 'Listing Agent', icon: '🏷', tagline: 'Price it right, market it fast, close with confidence.',
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['listing','psa','disclosure','commission_agr'],
     equations: [
       { label: 'Suggested List Price', formula: 'Average Comp Price/SqFt × Subject SqFt ± Adjustments', example: '$350/sqft × 1,800sqft = $630,000 list price' },
@@ -1928,7 +1928,7 @@ const ROLE_DASHBOARDS = {
 
   property_manager: {
     label: 'Property Manager', icon: '🔑', tagline: 'Leases, move-ins, renewals and maintenance in one workflow.',
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['lease','moveinout','renewal','referral'],
     equations: [
       { label: 'Monthly Rent Range (1% Rule)', formula: 'Property Value × 1%', example: '$300,000 × 1% = $3,000/mo target rent' },
@@ -1950,7 +1950,7 @@ const ROLE_DASHBOARDS = {
 
   broker: {
     label: 'Broker / Team Lead', icon: '💼', tagline: 'Oversee your team, track splits, and stay compliant.',
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['buyer_rep','listing','psa','commission_agr'],
     equations: [
       { label: 'Agent Net After Split', formula: 'Gross Commission × Agent Split % − Transaction Fee − E&O Fee', example: '$12,000 × 70% − $395 − $150 = $7,855 agent net' },
@@ -1972,7 +1972,7 @@ const ROLE_DASHBOARDS = {
 
   investor: {
     label: 'Investor', icon: '📈', tagline: 'Analyze deals, calculate returns, and move fast.',
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['psa','loi','disclosure','referral'],
     equations: [
       { label: 'Cap Rate', formula: 'NOI ÷ Property Value × 100', example: '$26,000 ÷ $300,000 = 8.7% cap rate' },
@@ -1994,7 +1994,7 @@ const ROLE_DASHBOARDS = {
 
   dual_agent: {
     label: 'Dual Agent', icon: '⚖️', tagline: 'Represent both sides — stay transparent and compliant.',
-    color: '#2A7C6F',
+    color: '#0b8a65',
     keyDocs: ['buyer_rep','listing','psa','disclosure'],
     equations: [
       { label: 'Full Commission (both sides)', formula: 'Sale Price × Total Commission %', example: '$500,000 × 5% = $25,000 full commission' },
