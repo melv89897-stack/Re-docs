@@ -1,0 +1,2221 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>RE Docs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+
+<style>
+:root {
+  /* Dark teal + bright green — CalRE Academy inspired */
+  --navy: #1e6e5e;
+  --navy-dk: #154d42;
+  --gold: #2ecc8e;
+  --gold-lt: #e6faf3;
+  --accent: #2ecc8e;
+  --accent2: #E9A84C;
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --border: #e0e9e6;
+  --text: #0f2622;
+  --text2: #3d6b62;
+  --text3: #8ab0a8;
+  --success: #1A7A45;
+  --success-bg: #EAF6EF;
+  /* landing-specific dark theme vars */
+  --land-bg: #152921;
+  --land-surface: #1e3530;
+  --land-border: #2a4a42;
+  --land-text: #e8f5f0;
+  --land-text2: #8dbfb5;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,.07), 0 8px 24px rgba(0,0,0,.05);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #152921;
+    --surface: #1e3530;
+    --border: #2a4a42;
+    --text: #e8f5f0;
+    --text2: #8dbfb5;
+    --text3: #4a7a70;
+    --success-bg: #0A2019;
+    --gold-lt: #0d2820;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #152921;
+  --surface: #1e3530;
+  --border: #2a4a42;
+  --text: #e8f5f0;
+  --text2: #8dbfb5;
+  --text3: #4a7a70;
+  --success-bg: #0A2019;
+  --gold-lt: #0d2820;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; min-height: 100%; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 14px; }
+body { padding-inline: 0; }
+
+/* ── SCREENS ── */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ── LANDING ── */
+#screen-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.land-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: #152921;
+  border-bottom: 1px solid rgba(46,204,142,.15);
+}
+.land-logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: .5px;
+}
+.land-logo span { color: #2ecc8e; }
+.land-nav-btns { display: flex; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 8px; font-size: 14px;
+  font-weight: 600; font-family: 'Rajdhani', sans-serif;
+  letter-spacing: .4px; cursor: pointer; border: none; transition: all .15s;
+  text-decoration: none;
+}
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
+.btn-outline:hover { border-color: #2ecc8e; color: #2ecc8e; }
+.btn-gold { background: #2ecc8e; color: #0f2622; font-weight: 700; }
+.btn-gold:hover { filter: brightness(1.08); }
+.btn-navy { background: #1e6e5e; color: #fff; }
+.btn-navy:hover { background: #154d42; }
+.btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--navy); }
+.btn-sm { padding: 7px 14px; font-size: 13px; }
+.btn-lg { padding: 13px 28px; font-size: 16px; }
+.btn-full { width: 100%; justify-content: center; }
+
+.land-hero {
+  background: linear-gradient(160deg, #152921 0%, #0f2622 60%, #1a3a30 100%);
+  padding: 80px 40px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.land-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(46,204,142,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.land-tag {
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #2ecc8e; background: rgba(46,204,142,.1);
+  border: 1px solid rgba(46,204,142,.3);
+  border-radius: 20px; padding: 4px 14px; margin-bottom: 22px;
+}
+.land-h1 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(36px, 6vw, 58px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0 0 16px;
+}
+.land-h1 span { color: #2ecc8e; }
+.land-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: rgba(255,255,255,.65);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero-trust {
+  margin-top: 40px;
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .5px;
+}
+
+/* pricing strip */
+.price-strip {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 40px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.price-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 200px;
+  flex: 1;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.price-card.featured {
+  border-color: var(--gold);
+  background: var(--gold-lt);
+  position: relative;
+}
+.price-badge {
+  position: absolute;
+  top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy-dk);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+.price-num {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.price-period {
+  font-size: 12px; color: var(--text3);
+  font-family: 'Rajdhani', sans-serif;
+}
+.price-label {
+  font-size: 13px;
+  color: var(--text2);
+  margin-top: 2px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: .5px;
+}
+.price-divider {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+/* doc grid */
+.land-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+.section-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 700; color: var(--text);
+  text-wrap: balance; margin: 0 0 12px;
+}
+.section-body { font-size: 15px; color: var(--text2); line-height: 1.7; max-width: 560px; margin-bottom: 36px; }
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.doc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow .15s, border-color .15s;
+}
+.doc-card:hover { box-shadow: var(--shadow); border-color: var(--gold); }
+.doc-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+.doc-card-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--text);
+}
+.doc-card-desc { font-size: 12px; color: var(--text2); line-height: 1.55; flex: 1; }
+.doc-price-tag {
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-lt);
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: 6px;
+  padding: 2px 10px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+/* how it works */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+}
+.step-num {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--gold); opacity: .5;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.step-title { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.step-body { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+.land-footer {
+  background: var(--navy-dk);
+  padding: 28px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+}
+.land-footer strong { color: rgba(255,255,255,.55); }
+
+/* ── AUTH SCREEN ── */
+#screen-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: var(--bg);
+}
+.auth-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+}
+.auth-logo {
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 24px; font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.auth-logo span { color: var(--gold); }
+.auth-sub { text-align: center; font-size: 13px; color: var(--text2); margin-bottom: 28px; }
+.auth-tabs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  border-radius: 8px; padding: 3px; margin-bottom: 24px;
+}
+.auth-tab {
+  padding: 8px; border-radius: 6px; border: none; cursor: pointer;
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--text2); background: transparent; transition: all .15s;
+}
+.auth-tab.active { background: var(--surface); color: var(--navy); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+.field-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+label { font-size: 12px; font-weight: 500; color: var(--text2); }
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 100%; padding: 10px 13px;
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: 14px;
+  font-family: inherit; outline: none; transition: border .15s;
+}
+input:focus { border-color: var(--navy); }
+.auth-err {
+  font-size: 12px; color: #C0392B;
+  background: #FDECEA; border: 1px solid rgba(192,57,43,.2);
+  border-radius: 6px; padding: 8px 12px; margin-bottom: 12px;
+  display: none;
+}
+.auth-err.show { display: block; }
+.auth-note { font-size: 11.5px; color: var(--text3); text-align: center; margin-top: 16px; line-height: 1.6; }
+.auth-back { font-size: 12px; color: var(--text3); text-align: center; margin-top: 20px; cursor: pointer; }
+.auth-back:hover { color: var(--navy); }
+
+/* ── APP SCREEN ── */
+#screen-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app-topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0);
+  background: #152921;
+  border-bottom: 1px solid rgba(46,204,142,.18);
+  display: flex; align-items: center;
+  padding: 0 24px;
+  height: 54px; gap: 16px; z-index: 50;
+}
+.app-logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px; font-weight: 700; color: #fff;
+}
+.app-logo span { color: #2ecc8e; }
+.app-topbar-space { flex: 1; }
+.app-user { font-size: 12px; color: rgba(255,255,255,.4); }
+.app-logout { font-size: 12px; color: rgba(255,255,255,.35); cursor: pointer; padding: 4px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,.12); background: transparent; font-family: inherit; }
+.app-logout:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+
+.app-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 36px 24px 60px;
+  width: 100%;
+}
+.app-heading {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 26px; font-weight: 700; color: var(--text);
+  margin-bottom: 4px;
+}
+.app-subhead { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
+
+/* doc list */
+.app-doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.app-doc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 18px 14px;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex; flex-direction: column; gap: 8px;
+  position: relative;
+}
+.app-doc-card:hover { box-shadow: var(--shadow); border-color: rgba(27,58,107,.4); }
+.app-doc-card.locked { opacity: .75; }
+.app-doc-card.unlocked { border-left: 3px solid var(--gold); }
+.adc-icon { font-size: 24px; }
+.adc-name { font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); }
+.adc-desc { font-size: 12px; color: var(--text2); line-height: 1.5; flex: 1; }
+.adc-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; border-radius: 5px;
+  padding: 2px 8px; width: fit-content; margin-top: 4px;
+}
+.adc-status.locked { background: var(--bg); color: var(--text3); border: 1px solid var(--border); }
+.adc-status.unlocked { background: var(--success-bg); color: var(--success); border: 1px solid rgba(26,122,69,.2); }
+
+/* editor panel */
+.editor-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: none;
+  margin-bottom: 28px;
+}
+.editor-panel.active { display: block; }
+.ep-header {
+  background: var(--navy);
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ep-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px; font-weight: 700; color: #fff; flex: 1;
+}
+.ep-close {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.7); border-radius: 6px; cursor: pointer;
+  font-size: 18px; line-height: 1; padding: 2px 8px; font-family: inherit;
+}
+.ep-close:hover { background: rgba(255,255,255,.2); }
+.ep-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+@media (max-width: 650px) { .ep-body { grid-template-columns: 1fr; } }
+.ep-fields {
+  padding: 22px;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  max-height: 580px;
+}
+.ep-preview {
+  padding: 22px;
+  overflow-y: auto;
+  max-height: 580px;
+  background: var(--bg);
+}
+.ep-preview-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 12px;
+}
+.ep-actions {
+  border-top: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+}
+.ep-actions-note { font-size: 11.5px; color: var(--text3); margin-left: auto; line-height: 1.5; text-align: right; }
+@media (max-width: 500px) { .ep-actions-note { display: none; } }
+
+/* unlock modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 200; display: flex;
+  align-items: center; justify-content: center;
+  padding: 20px;
+  display: none;
+}
+.modal-overlay.show { display: flex; }
+.modal-box {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 36px;
+  max-width: 380px; width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  text-align: center;
+}
+.modal-icon { font-size: 40px; margin-bottom: 14px; }
+.modal-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px;
+}
+.modal-body { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 24px; }
+.modal-price {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 40px; font-weight: 700;
+  color: var(--gold); margin-bottom: 6px;
+}
+.modal-price-sub { font-size: 12px; color: var(--text3); margin-bottom: 24px; }
+.modal-actions { display: flex; flex-direction: column; gap: 10px; }
+.modal-cancel { font-size: 12px; color: var(--text3); cursor: pointer; padding: 8px; }
+.modal-cancel:hover { color: var(--text); }
+
+/* ── ROLE CARDS ── */
+.role-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+.role-card:hover {
+  border-color: #2ecc8e;
+  box-shadow: 0 4px 20px rgba(46,204,142,.2);
+  transform: translateY(-2px);
+}
+.role-icon { font-size: 32px; margin-bottom: 10px; }
+.role-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+}
+.role-desc { font-size: 13px; color: var(--text2); line-height: 1.55; margin-bottom: 12px; }
+.role-docs {
+  font-size: 11px; font-weight: 600; color: var(--navy);
+  background: var(--gold-lt); border-radius: 6px; padding: 6px 10px;
+}
+
+/* doc preview styles (shared with print) */
+.doc-sheet { font-family: Georgia, 'Times New Roman', serif; color: var(--text); font-size: 12.5px; }
+.doc-header { text-align: center; border-bottom: 2px solid var(--navy); padding-bottom: 14px; margin-bottom: 18px; }
+.doc-logo { font-family: 'Rajdhani', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--gold); font-weight: 700; margin-bottom: 3px; }
+.doc-title { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); }
+:root[data-theme="dark"] .doc-title { color: var(--gold); }
+.doc-subtitle { font-size: 11px; color: var(--text2); margin-top: 2px; }
+.doc-section-title { font-family: 'Rajdhani', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); border-bottom: 1px solid var(--navy); padding-bottom: 3px; margin: 14px 0 9px; }
+:root[data-theme="dark"] .doc-section-title { color: var(--gold); border-color: var(--gold); }
+.doc-field-row { display: flex; gap: 12px; margin-bottom: 9px; }
+.doc-field-box { flex: 1; }
+.doc-field-label { font-family: 'Rajdhani', sans-serif; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 2px; }
+.doc-field-value { font-size: 12px; border-bottom: 1px solid var(--border); padding-bottom: 2px; min-height: 16px; color: var(--text); }
+.doc-sig-block { display: flex; gap: 24px; margin-top: 18px; }
+.doc-sig-col { flex: 1; }
+.doc-sig-line { border-bottom: 1.5px solid var(--text); height: 24px; margin-bottom: 4px; }
+.doc-sig-label { font-size: 9px; color: var(--text2); font-family: 'Rajdhani', sans-serif; }
+.doc-notice { font-size: 9.5px; color: var(--text3); margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--border); font-style: italic; line-height: 1.6; }
+.doc-sheet p { line-height: 1.6; margin: 0 0 7px; font-size: 12px; }
+</style>
+
+<!-- ══════════════════════ LANDING ══════════════════════ -->
+<div id="screen-landing" class="screen active">
+  <nav class="land-nav">
+    <div class="land-logo">RE <span>DOCS</span></div>
+    <div class="land-nav-btns">
+      <button class="btn btn-outline btn-sm" onclick="showAuth('login')">Log In</button>
+      <button class="btn btn-gold btn-sm" onclick="showAuth('signup')">Get Started</button>
+    </div>
+  </nav>
+
+  <div class="land-hero">
+    <div class="land-tag">Real Estate Document Platform</div>
+    <h1 class="land-h1">Professional Real Estate Docs.<br><span>One Simple Subscription.</span></h1>
+    <p class="land-sub">Fill out, print, and send professional real estate contracts in minutes. $19.99/month or $29.99/year — every document, unlimited use.</p>
+    <div class="hero-cta">
+      <button class="btn btn-gold btn-lg" onclick="showAuth('signup')">Start Free — Subscribe Anytime →</button>
+      <button class="btn btn-outline btn-lg" onclick="showAuth('login')">Sign In</button>
+    </div>
+    <div class="hero-trust">Free account &nbsp;·&nbsp; $19.99/mo or $29.99/yr &nbsp;·&nbsp; Cancel anytime</div>
+  </div>
+
+  <div class="price-strip" style="gap:16px;flex-wrap:wrap;justify-content:center">
+    <!-- Monthly -->
+    <div class="price-card featured" style="position:relative;min-width:200px">
+      <div class="price-badge">MONTHLY</div>
+      <div class="price-num">$19.99</div>
+      <div class="price-period">/ month</div>
+      <div class="price-label">All 10 Docs — Unlimited — Cancel Anytime</div>
+      <button class="btn btn-navy btn-full" style="margin-top:14px;font-size:13px" onclick="showAuth('signup')">Get Monthly →</button>
+    </div>
+    <!-- Annual -->
+    <div class="price-card featured" style="position:relative;min-width:200px;border-color:var(--accent2);background:linear-gradient(135deg,var(--gold-lt),#fff)">
+      <div class="price-badge" style="background:var(--accent2);color:#fff">BEST VALUE</div>
+      <div class="price-num" style="color:var(--accent2)">$29.99</div>
+      <div class="price-period">/ year</div>
+      <div class="price-label" style="color:var(--text2)">All 10 Docs — Save $210 vs Monthly</div>
+      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:var(--accent2);border-color:var(--accent2)" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
+    </div>
+    <!-- What's included -->
+    <div class="price-card" style="text-align:left;max-width:260px;min-width:200px">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Both plans include:</div>
+      <div style="font-size:12px;color:var(--text2);display:flex;flex-direction:column;gap:6px">
+        <span>✓ All 10 professional contract templates</span>
+        <span>✓ Live fill-as-you-type preview</span>
+        <span>✓ Print-ready PDF format</span>
+        <span>✓ Copy to email your client instantly</span>
+        <span>✓ Free account — pay only when you subscribe</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="land-section">
+    <div class="section-eyebrow">All 10 Documents</div>
+    <div class="section-title">Every form a realtor needs</div>
+    <p class="section-body">Professional templates used by agents and brokers. Fill in the fields, print a clean PDF, or copy to email — done in minutes. Subscribe for $19.99/mo to unlock everything.</p>
+    <div class="doc-grid">
+      <div class="doc-card"><div class="doc-icon">🤝</div><div class="doc-card-name">Buyer Rep Agreement</div><div class="doc-card-desc">Exclusive right to represent buyer. Commission, term, search area.</div></div>
+      <div class="doc-card"><div class="doc-icon">🏡</div><div class="doc-card-name">Listing Agreement</div><div class="doc-card-desc">Exclusive right to sell. Pricing, commission split, MLS terms.</div></div>
+      <div class="doc-card"><div class="doc-icon">🔑</div><div class="doc-card-name">Residential Lease</div><div class="doc-card-desc">Full lease agreement with rent, deposits, late fees, utilities.</div></div>
+      <div class="doc-card"><div class="doc-icon">📋</div><div class="doc-card-name">Purchase & Sale Contract</div><div class="doc-card-desc">Residential purchase offer with price, contingencies, closing.</div></div>
+      <div class="doc-card"><div class="doc-icon">💼</div><div class="doc-card-name">Commission Agreement</div><div class="doc-card-desc">Broker–agent split plan, cap, transaction fees, IC status.</div></div>
+      <div class="doc-card"><div class="doc-icon">🔗</div><div class="doc-card-name">Referral Agreement</div><div class="doc-card-desc">Agent-to-agent referral fee, client info, expiry terms.</div></div>
+      <div class="doc-card"><div class="doc-icon">📝</div><div class="doc-card-name">Letter of Intent</div><div class="doc-card-desc">Non-binding LOI for residential and commercial offers.</div></div>
+      <div class="doc-card"><div class="doc-icon">⚠️</div><div class="doc-card-name">Property Disclosure</div><div class="doc-card-desc">Seller's disclosure of known defects, systems, history.</div></div>
+      <div class="doc-card"><div class="doc-icon">🏠</div><div class="doc-card-name">Move-In / Move-Out</div><div class="doc-card-desc">Unit condition checklist with room-by-room inspection fields.</div></div>
+      <div class="doc-card"><div class="doc-icon">🔄</div><div class="doc-card-name">Lease Renewal</div><div class="doc-card-desc">Renewal terms, new rent, updated conditions, signatures.</div></div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="land-section" style="padding-top:52px;padding-bottom:52px">
+      <div class="section-eyebrow">How It Works</div>
+      <div class="section-title" style="margin-bottom:28px">Three steps to a finished document</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Create Your Free Account</div>
+          <div class="step-body">Sign up with your email and password. Your account is free — you only pay when you unlock a document.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Unlock Docs</div>
+          <div class="step-body">Subscribe for $19.99/mo to unlock all 10 documents — use them unlimited, anytime.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Fill, Print & Send</div>
+          <div class="step-body">Type directly into the form. Print a clean PDF or copy all fields to paste into your email to the client.</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:36px">
+        <button class="btn btn-navy btn-lg" onclick="showAuth('signup')">Start Free — Subscribe or Unlock Per Doc</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BLOG ── -->
+  <div class="land-section" style="padding-top:60px;padding-bottom:60px">
+    <div class="section-eyebrow">RE Docs Blog</div>
+    <div class="section-title">Real Estate Tips &amp; Insights</div>
+    <p class="section-body">Expert guidance for agents, buyers, and investors navigating today's market.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:32px">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)">
+        <div style="background:linear-gradient(135deg,#2A7C6F 0%,#1B5C52 100%);padding:24px 20px 18px;color:#fff">
+          <div style="font-size:32px;margin-bottom:10px">📄</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;line-height:1.3">5 Contract Deadlines Every Buyer's Agent Must Track</div>
+        </div>
+        <div style="padding:18px 20px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px">📅 Oct 2026 &nbsp;·&nbsp; 4 min read</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin:0 0 14px">Missing a contingency deadline can cost your client the deal — and you your license. Here are the five dates that matter most in a California residential purchase, and how to track them without a spreadsheet.</p>
+          <div style="font-size:12px;font-weight:600;color:var(--navy)">Inspection · Appraisal · Loan · Title · Contingency Removal</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)">
+        <div style="background:linear-gradient(135deg,#E9A84C 0%,#c07c1e 100%);padding:24px 20px 18px;color:#fff">
+          <div style="font-size:32px;margin-bottom:10px">💰</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;line-height:1.3">Commission Math: How to Calculate Your True Net Pay</div>
+        </div>
+        <div style="padding:18px 20px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px">📅 Oct 2026 &nbsp;·&nbsp; 5 min read</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin:0 0 14px">Gross commission is not what you take home. Between broker splits, transaction fees, referral payouts, and taxes, most agents net 30–40% less than expected. Here's how to run the math before you pop the champagne.</p>
+          <div style="font-size:12px;font-weight:600;color:var(--accent2)">Gross → Split → Fees → Net</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)">
+        <div style="background:linear-gradient(135deg,#3D9E8F 0%,#2A7C6F 100%);padding:24px 20px 18px;color:#fff">
+          <div style="font-size:32px;margin-bottom:10px">🏠</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;line-height:1.3">Dual Agency in 2026: What You Must Disclose and When</div>
+        </div>
+        <div style="padding:18px 20px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px">📅 Sep 2026 &nbsp;·&nbsp; 6 min read</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin:0 0 14px">Representing both buyer and seller in the same transaction is legal in most states — but only with the right disclosures. We break down exactly when and how to present dual agency consent, and the paperwork that protects everyone.</p>
+          <div style="font-size:12px;font-weight:600;color:var(--navy)">Disclosure · Consent · Risk Management</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)">
+        <div style="background:linear-gradient(135deg,#1B5C52 0%,#0D3530 100%);padding:24px 20px 18px;color:#fff">
+          <div style="font-size:32px;margin-bottom:10px">📋</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;line-height:1.3">Property Managers: The Move-In Checklist That Holds Up in Court</div>
+        </div>
+        <div style="padding:18px 20px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px">📅 Sep 2026 &nbsp;·&nbsp; 4 min read</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin:0 0 14px">Security deposit disputes are the #1 cause of small claims court filings involving landlords. A thorough, signed move-in/move-out form is your best defense. Here's exactly what to document — room by room — before the tenant gets the keys.</p>
+          <div style="font-size:12px;font-weight:600;color:var(--navy)">Deposits · Documentation · Legal Protection</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── ABOUT + REVIEWS ── -->
+  <div style="background:var(--surface);border-top:1px solid var(--border)">
+    <div class="land-section" style="padding-top:60px;padding-bottom:60px">
+      <div class="section-eyebrow">About RE Docs</div>
+      <div class="section-title">Built by agents, for agents.</div>
+      <p class="section-body" style="max-width:700px;margin-left:auto;margin-right:auto">RE Docs was created by a team of working real estate professionals who were tired of paying $50+ for document software that felt like it was designed in 2005. We built the tool we always wished existed: clean, fast, mobile-friendly, and priced for individual agents — not just big brokerages. Every template was reviewed against current state forms and reflects the way real deals actually get done.</p>
+
+      <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin:40px 0 48px;text-align:center">
+        <div><div style="font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:var(--navy)">10</div><div style="font-size:13px;color:var(--text2)">Professional Templates</div></div>
+        <div><div style="font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:var(--navy)">6</div><div style="font-size:13px;color:var(--text2)">Agent Role Dashboards</div></div>
+        <div><div style="font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:var(--navy)">$29.99</div><div style="font-size:13px;color:var(--text2)">Full Year — Best Deal</div></div>
+        <div><div style="font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:var(--navy)">∞</div><div style="font-size:13px;color:var(--text2)">Unlimited Document Use</div></div>
+      </div>
+
+      <div class="section-eyebrow" style="margin-bottom:24px">★★★★★ Reviews</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"I close 20+ deals a year and RE Docs saves me at least an hour per transaction. The deal setup auto-fills everything — I never have to type the same address twice."</p>
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Maria T.</div>
+          <div style="font-size:11px;color:var(--text3)">Listing Agent · San Diego, CA</div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"The calendar view is a game-changer. I can see every deadline at a glance, add them to Google Calendar in one click, and my clients never feel like I dropped the ball."</p>
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">James K.</div>
+          <div style="font-size:11px;color:var(--text3)">Buyer's Agent · Los Angeles, CA</div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"As a property manager with 40+ units, the lease and move-in checklist templates alone are worth the subscription. Clean, professional, and my tenants actually read them."</p>
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Rachel M.</div>
+          <div style="font-size:11px;color:var(--text3)">Property Manager · Phoenix, AZ</div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★☆</div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"Switched from a $90/month service and honestly I don't miss it. The commission calculator is surprisingly accurate and the role dashboard for brokers is exactly what I needed."</p>
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">Derek W.</div>
+          <div style="font-size:11px;color:var(--text3)">Broker / Team Lead · Austin, TX</div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <button class="btn btn-gold btn-lg" onclick="showAuth('signup')">Join RE Docs — Start Free →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="land-footer">
+    <strong>RE Docs</strong> &nbsp;·&nbsp; Real Estate Document Platform &nbsp;·&nbsp; Templates for informational use — consult a licensed attorney before use.
+  </div>
+</div>
+
+<!-- ══════════════════════ AUTH ══════════════════════ -->
+<div id="screen-auth" class="screen">
+  <div class="auth-box">
+    <div class="auth-logo">RE <span>DOCS</span></div>
+    <div class="auth-sub">Real Estate Document Platform</div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Log In</button>
+      <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+    <div id="auth-err" class="auth-err"></div>
+    <div id="login-form">
+      <div class="field-group"><label>Email</label><input type="email" id="login-email" placeholder="you@email.com" autocomplete="email"></div>
+      <div class="field-group">
+        <label>Password</label>
+        <div style="position:relative">
+          <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()" style="padding-right:42px;width:100%">
+          <button type="button" onclick="togglePw('login-pass',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:15px;color:var(--text3);padding:2px">👁</button>
+        </div>
+      </div>
+      <button class="btn btn-navy btn-full" style="margin-top:6px" onclick="doLogin()">Log In →</button>
+    </div>
+    <div id="signup-form" style="display:none">
+      <div class="field-group"><label>Your Full Name</label><input type="text" id="signup-name" placeholder="Jane Smith" autocomplete="name"></div>
+      <div class="field-group"><label>Email Address</label><input type="email" id="signup-email" placeholder="you@email.com" autocomplete="email"></div>
+      <div class="field-group">
+        <label>Password</label>
+        <div style="position:relative">
+          <input type="password" id="signup-pass" placeholder="Create a password" autocomplete="new-password" oninput="checkStrength()" style="padding-right:42px;width:100%">
+          <button type="button" onclick="togglePw('signup-pass',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:15px;color:var(--text3);padding:2px">👁</button>
+        </div>
+        <!-- Strength bar -->
+        <div id="pw-strength-bar" style="margin-top:6px;height:4px;border-radius:4px;background:var(--border);overflow:hidden;display:none">
+          <div id="pw-strength-fill" style="height:100%;width:0%;transition:width .2s,background .2s;border-radius:4px"></div>
+        </div>
+        <div id="pw-strength-label" style="font-size:11px;color:var(--text3);margin-top:3px;display:none"></div>
+      </div>
+      <div class="field-group">
+        <label>Confirm Password</label>
+        <div style="position:relative">
+          <input type="password" id="signup-pass2" placeholder="Repeat your password" autocomplete="new-password" oninput="checkConfirm()" onkeydown="if(event.key==='Enter')doSignup()" style="padding-right:42px;width:100%">
+          <button type="button" onclick="togglePw('signup-pass2',this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:15px;color:var(--text3);padding:2px">👁</button>
+        </div>
+        <div id="pw-match-label" style="font-size:11px;margin-top:3px;display:none"></div>
+      </div>
+      <button class="btn btn-navy btn-full" style="margin-top:6px" onclick="doSignup()">Create Free Account →</button>
+    </div>
+    <div class="auth-note">Free account. Subscribe for $19.99/mo or $29.99/yr to unlock all documents.<br><span style="color:var(--text3)">Demo mode — no real payment required.</span></div>
+    <div class="auth-back" onclick="showScreen('landing')">← Back to home</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ ROLE PICKER ══════════════════════ -->
+<div id="screen-role" class="screen">
+  <div class="app-topbar">
+    <div class="app-logo">RE <span>DOCS</span></div>
+    <div class="app-topbar-space"></div>
+    <div class="app-user" id="role-user-label"></div>
+    <button class="app-logout" onclick="doLogout()">Log Out</button>
+  </div>
+  <div style="max-width:680px;margin:0 auto;padding:40px 20px">
+    <div style="text-align:center;margin-bottom:36px">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Welcome to RE Docs</div>
+      <h2 style="font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--text);margin:0 0 10px">What best describes your role?</h2>
+      <p style="color:var(--text2);font-size:15px;margin:0">Pick your role once — your dashboard customizes to your work automatically.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">
+
+      <!-- Buyer's Agent -->
+      <div class="role-card" onclick="selectRole('buyer_agent')">
+        <div class="role-icon">🤝</div>
+        <div class="role-name">Buyer's Agent</div>
+        <div class="role-desc">You represent buyers. You write offers, negotiate deals, and guide clients through purchase.</div>
+        <div class="role-docs">Buyer Rep · Purchase & Sale · Disclosure · Commission</div>
+      </div>
+
+      <!-- Listing Agent -->
+      <div class="role-card" onclick="selectRole('listing_agent')">
+        <div class="role-icon">🏡</div>
+        <div class="role-name">Listing Agent</div>
+        <div class="role-desc">You represent sellers. You list properties, market homes, and negotiate on behalf of sellers.</div>
+        <div class="role-docs">Listing Agreement · Disclosure · Commission · LOI</div>
+      </div>
+
+      <!-- Property Manager -->
+      <div class="role-card" onclick="selectRole('property_manager')">
+        <div class="role-icon">🔑</div>
+        <div class="role-name">Property Manager</div>
+        <div class="role-desc">You manage rentals. You handle leases, tenants, move-ins, move-outs, and renewals.</div>
+        <div class="role-docs">Lease · Move-In/Out · Renewal · Disclosure</div>
+      </div>
+
+      <!-- Broker -->
+      <div class="role-card" onclick="selectRole('broker')">
+        <div class="role-icon">💼</div>
+        <div class="role-name">Broker / Team Lead</div>
+        <div class="role-desc">You run a team or brokerage. You manage agents, splits, referrals, and production.</div>
+        <div class="role-docs">Commission · Referral · Listing · Buyer Rep</div>
+      </div>
+
+      <!-- Investor -->
+      <div class="role-card" onclick="selectRole('investor')">
+        <div class="role-icon">📈</div>
+        <div class="role-name">Investor</div>
+        <div class="role-desc">You buy and hold or flip properties. You write offers, calculate returns, and manage deals.</div>
+        <div class="role-docs">Purchase & Sale · LOI · Lease · Disclosure</div>
+      </div>
+
+      <!-- Dual Agent -->
+      <div class="role-card" onclick="selectRole('dual_agent')">
+        <div class="role-icon">⚡</div>
+        <div class="role-name">Dual Agent / All Docs</div>
+        <div class="role-desc">You do it all — buying, selling, leasing. You want access to every document every time.</div>
+        <div class="role-docs">All 10 Documents · Full Dashboard</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ APP ══════════════════════ -->
+<div id="screen-app" class="screen">
+  <div class="app-topbar">
+    <div class="app-logo">RE <span>DOCS</span></div>
+    <div class="app-topbar-space"></div>
+    <div id="app-role-label" style="font-size:12px;color:var(--text3);margin-right:6px"></div>
+    <button class="app-logout" style="margin-right:6px;background:var(--gold-lt);color:var(--navy);border-color:var(--border)" onclick="switchRole()">Switch Role</button>
+    <div class="app-user" id="app-user-label"></div>
+    <button class="app-logout" onclick="doLogout()">Log Out</button>
+  </div>
+
+  <div class="app-body">
+
+    <!-- ── ROLE DASHBOARD STRIP ── -->
+    <div id="role-dashboard"></div>
+
+    <!-- ── TAB NAV ── -->
+    <div style="display:flex;gap:4px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:0">
+      <button id="tab-deal" onclick="switchTab('deal')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:#2ecc8e;border-bottom:3px solid #2ecc8e;margin-bottom:-2px">🏠 Deal Setup</button>
+      <button id="tab-docs" onclick="switchTab('docs')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📄 Documents</button>
+      <button id="tab-calendar" onclick="switchTab('calendar')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📅 Deadlines</button>
+    </div>
+
+    <!-- ── DEAL SETUP PANEL ── -->
+    <div id="panel-deal">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px">
+        <div>
+          <div class="app-heading" style="margin-bottom:2px">Deal Setup</div>
+          <div class="app-subhead" style="margin-bottom:0">Fill in once — all contracts pre-populate automatically.</div>
+        </div>
+        <button class="btn btn-navy btn-sm" onclick="applyDealToAllDocs();switchTab('docs')">Apply to All Docs → Open Documents</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px">
+
+        <!-- Agent Info -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px">
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em">👤 Agent Info</div>
+          <div class="field-group"><label>Your Full Name</label><input type="text" id="deal_agent" placeholder="Sarah Johnson" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Brokerage Name</label><input type="text" id="deal_brokerage" placeholder="Premier Realty Group" oninput="saveDeal()"></div>
+          <div class="field-group"><label>License #</label><input type="text" id="deal_license" placeholder="CA-DRE 01234567" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Phone</label><input type="tel" id="deal_phone" placeholder="(555) 123-4567" oninput="saveDeal()"></div>
+        </div>
+
+        <!-- Property -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px">
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em">🏠 Property</div>
+          <div class="field-group"><label>Property Address</label><input type="text" id="deal_address" placeholder="1234 Elm St, Los Angeles, CA 90001" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Sale / Lease Price</label><input type="text" id="deal_price" placeholder="$625,000" oninput="saveDeal();calcCommission()"></div>
+          <div class="field-group"><label>Closing / Move-in Date</label><input type="text" id="deal_close" placeholder="November 15, 2026" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Today's Date</label><input type="text" id="deal_today" placeholder="October 30, 2026" oninput="saveDeal()"></div>
+        </div>
+
+        <!-- Client -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px">
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em">👥 Client</div>
+          <div class="field-group"><label>Buyer / Tenant Name(s)</label><input type="text" id="deal_buyer" placeholder="John & Jane Smith" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Seller / Landlord Name</label><input type="text" id="deal_seller" placeholder="Robert Johnson" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Other Agent Name</label><input type="text" id="deal_other_agent" placeholder="Mike Davis" oninput="saveDeal()"></div>
+          <div class="field-group"><label>Earnest Money</label><input type="text" id="deal_earnest" placeholder="$12,500" oninput="saveDeal()"></div>
+        </div>
+
+        <!-- Commission Calculator -->
+        <div style="background:var(--gold-lt);border:1.5px solid var(--navy);border-radius:12px;padding:18px">
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em">💰 Commission Calculator</div>
+          <div class="field-group"><label>Total Commission %</label><input type="text" id="deal_comm_pct" placeholder="5%" oninput="saveDeal();calcCommission()"></div>
+          <div class="field-group"><label>Your Split (you keep)</label><input type="text" id="deal_split_pct" placeholder="70%" oninput="saveDeal();calcCommission()"></div>
+          <div class="field-group"><label>Transaction Fee</label><input type="text" id="deal_txn_fee" placeholder="$395" oninput="saveDeal();calcCommission()"></div>
+          <div class="field-group"><label>Referral Fee</label><input type="text" id="deal_ref_fee" placeholder="$0" oninput="saveDeal();calcCommission()"></div>
+          <!-- Live results -->
+          <div style="background:var(--surface);border-radius:8px;padding:12px;margin-top:8px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2)"><span>Gross Commission</span><span id="calc_gross" style="font-weight:600;color:var(--text)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2)"><span>Broker Takes</span><span id="calc_broker" style="font-weight:600;color:var(--text)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2)"><span>Fees</span><span id="calc_fees" style="font-weight:600;color:var(--text)">—</span></div>
+            <div style="height:1px;background:var(--border);margin:2px 0"></div>
+            <div style="display:flex;justify-content:space-between;font-size:15px"><span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--navy)">YOU NET</span><span id="calc_net" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:var(--navy)">—</span></div>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+
+      <div style="margin-top:20px;text-align:center">
+        <button class="btn btn-navy btn-lg" onclick="applyDealToAllDocs();switchTab('docs')">✓ Apply Deal Info — Open My Documents →</button>
+        <div style="font-size:12px;color:var(--text3);margin-top:8px">All matching fields across all 10 documents will be pre-filled instantly.</div>
+      </div>
+    </div><!-- /panel-deal -->
+
+    <!-- ── DOCUMENTS PANEL ── -->
+    <div id="panel-docs" style="display:none">
+      <div class="app-heading" style="margin-bottom:4px">Your Documents</div>
+      <div class="app-subhead" id="app-subhead">Subscribe to unlock all 10 docs — $19.99/mo or $29.99/yr.</div>
+      <div id="sub-banner" style="display:none;background:var(--success-bg);border:1px solid var(--success);color:var(--success);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;margin-bottom:18px;">
+        ✓ Active Subscription — All 10 documents unlocked
+      </div>
+      <div id="sub-btn-row" style="margin-bottom:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-gold btn-sm" onclick="confirmSubscribe('monthly')">★ Monthly — $19.99/mo</button>
+        <button class="btn btn-navy btn-sm" onclick="confirmSubscribe('annual')" style="background:var(--accent2);border-color:var(--accent2)">★ Annual — $29.99/yr · Best Deal</button>
+      </div>
+
+    <!-- Editor panel (shown when a doc is open) -->
+    <div class="editor-panel" id="editor-panel">
+      <div class="ep-header">
+        <div class="ep-title" id="ep-title">Document</div>
+        <button class="ep-close" onclick="closeEditor()">✕</button>
+      </div>
+      <div class="ep-body">
+        <div class="ep-fields" id="ep-fields"></div>
+        <div class="ep-preview">
+          <div class="ep-preview-label">Live Preview — updates as you type</div>
+          <div id="ep-preview-content"></div>
+        </div>
+      </div>
+      <div class="ep-actions">
+        <button class="btn btn-navy btn-sm" onclick="copyDocEmail()">📋 Copy</button>
+        <button class="btn btn-navy btn-sm" onclick="emailDocToCounterparty()" style="background:var(--accent);border-color:var(--accent)">✉️ Email to Counterparty</button>
+        <button class="btn btn-navy btn-sm" onclick="openThankYouEmail()" style="background:var(--accent2);border-color:var(--accent2);color:#fff">💌 Thank-You Email</button>
+        <div id="copy-confirm" style="font-size:12px;color:var(--success);display:none">✅ Copied!</div>
+        <div class="ep-actions-note">To save as PDF: use your browser's<br>Print → Save as PDF option</div>
+      </div>
+    </div>
+
+    <div class="app-doc-grid" id="app-doc-grid"></div>
+    </div><!-- /panel-docs -->
+
+    <!-- ── CALENDAR / DEADLINES PANEL ── -->
+    <div id="panel-calendar" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+        <div>
+          <div class="app-heading" style="margin-bottom:2px">📅 Contract Deadlines</div>
+          <div class="app-subhead">Key dates calculated from your Deal Setup — color-coded by urgency.</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-navy btn-sm" onclick="printCalendar()">🖨️ Print Deadlines</button>
+          <button class="btn btn-navy btn-sm" style="background:var(--gold-lt);color:var(--navy);border-color:var(--border)" onclick="switchTab('deal')">← Back to Deal Setup</button>
+        </div>
+      </div>
+      <div id="cal-no-date" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;display:none">
+        <div style="font-size:32px;margin-bottom:10px">📅</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px">No Closing Date Set</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:16px">Enter a closing date in Deal Setup to see all your contract deadlines.</div>
+        <button class="btn btn-navy btn-sm" onclick="switchTab('deal')">Go to Deal Setup →</button>
+      </div>
+      <div id="cal-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"></div>
+      <div id="cal-timeline" style="margin-top:24px"></div>
+    </div>
+
+  </div><!-- /app-body -->
+</div>
+
+<!-- ══════════════════════ UNLOCK MODAL ══════════════════════ -->
+<div class="modal-overlay" id="unlock-modal">
+  <div class="modal-box">
+    <div class="modal-icon">🔓</div>
+    <div class="modal-title" id="modal-doc-name">Unlock Document</div>
+    <div class="modal-body">Subscribe to unlock all 10 documents instantly.</div>
+
+    <!-- Monthly -->
+    <div style="background:var(--gold-lt);border:2px solid var(--navy);border-radius:12px;padding:16px;margin-bottom:10px;text-align:left">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--navy)">Monthly</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--navy)">$19.99<span style="font-size:12px;font-weight:400;color:var(--text3)">/mo</span></div>
+      </div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:12px">All 10 docs, unlimited fills, cancel anytime.</div>
+      <button class="btn btn-navy btn-full" onclick="confirmSubscribe('monthly')">Subscribe Monthly — $19.99/mo →</button>
+    </div>
+    <!-- Annual -->
+    <div style="background:linear-gradient(135deg,#fff8ee,#fff);border:2px solid var(--accent2);border-radius:12px;padding:16px;margin-bottom:16px;text-align:left;position:relative">
+      <div style="position:absolute;top:-10px;right:14px;background:var(--accent2);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.05em">BEST VALUE</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--accent2)">Annual</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--accent2)">$29.99<span style="font-size:12px;font-weight:400;color:var(--text3)">/yr</span></div>
+      </div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:12px">All 10 docs for a full year — saves you <strong>$210</strong> vs monthly.</div>
+      <button class="btn btn-gold btn-full" style="background:var(--accent2);border-color:var(--accent2)" onclick="confirmSubscribe('annual')">Subscribe Annual — $29.99/yr →</button>
+    </div>
+
+    <div class="modal-cancel" onclick="closeModal()">Cancel — go back</div>
+    <div style="font-size:11px;color:var(--text3);margin-top:12px;line-height:1.6">
+      Demo mode: no real charge. In production, connect Stripe or PayPal.
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STORAGE HELPERS ──────────────────────────────────────────────────────
+function store(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
+function load(key, def) { try { const v = localStorage.getItem(key); return v !== null ? JSON.parse(v) : def; } catch(e){ return def; } }
+
+// ── STATE ────────────────────────────────────────────────────────────────
+let currentUser = load('redocs_user', null); // {name, email, pass}
+let users = load('redocs_users', []); // [{name,email,pass}]
+let unlocked = load('redocs_unlocked_' + (currentUser?.email||''), []); // doc ids
+let subscribed = load('redocs_subscribed_' + (currentUser?.email||''), false); // bool
+let currentDocId = null;
+let pendingUnlockId = null;
+
+// ── DOC CATALOG ──────────────────────────────────────────────────────────
+const DOCS = [
+  {
+    id: 'buyer_rep', icon: '🤝', name: 'Buyer Representation Agreement', desc: 'Exclusive right to represent buyer — commission, term, search area, signatures.',
+    fields: [
+      {id:'bra_date', label:'Agreement Date', ph:'September 24, 2026'},
+      {id:'bra_buyer', label:'Buyer Full Name(s)', ph:'John & Jane Smith'},
+      {id:'bra_agent', label:'Agent Name', ph:'Sarah Johnson'},
+      {id:'bra_brokerage', label:'Brokerage Name', ph:'Premier Realty Group'},
+      {id:'bra_license', label:'Agent License #', ph:'CA-DRE 01234567'},
+      {id:'bra_start', label:'Agreement Start Date', ph:'October 1, 2026'},
+      {id:'bra_end', label:'Agreement End Date', ph:'December 31, 2026'},
+      {id:'bra_area', label:'Search Area / City', ph:'Los Angeles County, CA'},
+      {id:'bra_price_min', label:'Min Price Range', ph:'$400,000'},
+      {id:'bra_price_max', label:'Max Price Range', ph:'$750,000'},
+      {id:'bra_comm', label:"Buyer Agent Commission (%)", ph:'2.5%'},
+      {id:'bra_email', label:'Agent Email', ph:'sarah@premierrealty.com'},
+      {id:'bra_phone', label:'Agent Phone', ph:'(555) 123-4567'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">BUYER REPRESENTATION AGREEMENT</div><div class="doc-subtitle">Exclusive Right to Represent</div></div>
+    <div class="doc-section-title">Parties</div>
+    <p>This Agreement is entered into on <strong>${f.bra_date||'___'}</strong> between Buyer(s) <strong>${f.bra_buyer||'_________________'}</strong> and Agent <strong>${f.bra_agent||'_________________'}</strong> of <strong>${f.bra_brokerage||'_________________'}</strong> (License: ${f.bra_license||'__________'}).</p>
+    <div class="doc-section-title">Term & Territory</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Start Date</div><div class="doc-field-value">${f.bra_start||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">End Date</div><div class="doc-field-value">${f.bra_end||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Search Area</div><div class="doc-field-value">${f.bra_area||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Price Range</div><div class="doc-field-value">${f.bra_price_min||'___'} – ${f.bra_price_max||'___'}</div></div></div>
+    <div class="doc-section-title">Compensation</div>
+    <p>Buyer agrees Agent shall be entitled to <strong>${f.bra_comm||'___'}</strong> of the purchase price. If seller does not offer a buyer's agent commission or offers less, Buyer agrees to pay the difference.</p>
+    <div class="doc-section-title">Duties & Disclosures</div>
+    <p>Agent agrees to assist Buyer in locating property, present all offers, advise on values and terms, negotiate on Buyer's behalf, and maintain confidentiality. Buyer agrees to work exclusively with Agent, notify Agent of all properties of interest, and obtain financing pre-approval prior to making offers.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Buyer Signature / Date</div><div class="doc-sig-line" style="margin-top:20px"></div><div class="doc-sig-label">Buyer Signature (joint) / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Agent Signature / Date</div><div style="margin-top:10px;font-size:11px;color:var(--text2)">${f.bra_agent||'Agent'}<br>${f.bra_phone||''} | ${f.bra_email||''}</div></div></div>
+    <div class="doc-notice">Template for informational use only. Consult a licensed attorney and your state real estate commission before use.</div></div>`
+  },
+  {
+    id: 'listing', icon: '🏡', name: 'Listing Agreement', desc: 'Exclusive right to sell — listing price, commission split, MLS terms, signatures.',
+    fields: [
+      {id:'la_date', label:'Agreement Date', ph:'September 24, 2026'},
+      {id:'la_seller', label:'Seller Full Name(s)', ph:'Robert & Linda Johnson'},
+      {id:'la_agent', label:'Listing Agent Name', ph:'Sarah Johnson'},
+      {id:'la_brokerage', label:'Brokerage Name', ph:'Premier Realty Group'},
+      {id:'la_address', label:'Property Address', ph:'1234 Elm Street, Los Angeles, CA 90001'},
+      {id:'la_price', label:'Listing Price', ph:'$825,000'},
+      {id:'la_start', label:'Listing Start Date', ph:'October 1, 2026'},
+      {id:'la_end', label:'Listing Expiration', ph:'January 1, 2027'},
+      {id:'la_comm', label:'Total Commission (%)', ph:'5%'},
+      {id:'la_split', label:"Buyer Agent Share (%)", ph:'2.5%'},
+      {id:'la_lockbox', label:'Lockbox Y/N', ph:'Yes'},
+      {id:'la_phone', label:'Agent Phone', ph:'(555) 123-4567'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">EXCLUSIVE RIGHT TO SELL — LISTING AGREEMENT</div><div class="doc-subtitle">Residential Real Estate</div></div>
+    <div class="doc-section-title">Parties</div>
+    <p>Entered into on <strong>${f.la_date||'___'}</strong> by Seller(s) <strong>${f.la_seller||'___'}</strong> and Listing Agent <strong>${f.la_agent||'___'}</strong> of <strong>${f.la_brokerage||'___'}</strong>.</p>
+    <div class="doc-section-title">Property & Terms</div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Property Address</div><div class="doc-field-value">${f.la_address||'___'}</div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Listing Price</div><div class="doc-field-value">${f.la_price||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Lockbox</div><div class="doc-field-value">${f.la_lockbox||'Yes / No'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Start Date</div><div class="doc-field-value">${f.la_start||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Expiration</div><div class="doc-field-value">${f.la_end||'___'}</div></div></div>
+    <div class="doc-section-title">Commission</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Total Commission</div><div class="doc-field-value">${f.la_comm||'___'} of sale price</div></div><div class="doc-field-box"><div class="doc-field-label">Buyer Agent Share</div><div class="doc-field-value">${f.la_split||'___'}</div></div></div>
+    <p>Seller agrees to pay commission if property is sold during the listing period or within 90 days after expiration to a buyer introduced during the listing period.</p>
+    <div class="doc-section-title">Agent Duties</div>
+    <p>Agent agrees to list on MLS within 2 business days, conduct marketing including photography and online syndication, present all offers promptly, and represent Seller's best interests in all negotiations.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Seller Signature / Date</div><div class="doc-sig-line" style="margin-top:20px"></div><div class="doc-sig-label">Seller (joint) / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Agent Signature / Date</div><div style="margin-top:10px;font-size:11px;color:var(--text2)">${f.la_agent||'Agent'} | ${f.la_phone||''}</div></div></div>
+    <div class="doc-notice">Template only. Consult a licensed attorney before use.</div></div>`
+  },
+  {
+    id: 'lease', icon: '🔑', name: 'Residential Lease Agreement', desc: 'Full lease with rent, deposit, late fees, pets, utilities, and both party signatures.',
+    fields: [
+      {id:'le_date', label:'Agreement Date', ph:'September 24, 2026'},
+      {id:'le_landlord', label:'Landlord / Owner', ph:'Premier Properties LLC'},
+      {id:'le_tenant', label:'Tenant Name(s)', ph:'John Smith'},
+      {id:'le_address', label:'Property Address', ph:'456 Pine St Apt 2B, Los Angeles, CA'},
+      {id:'le_start', label:'Lease Start', ph:'October 1, 2026'},
+      {id:'le_end', label:'Lease End', ph:'September 30, 2027'},
+      {id:'le_rent', label:'Monthly Rent', ph:'$2,400'},
+      {id:'le_due', label:'Rent Due Day', ph:'1st of each month'},
+      {id:'le_deposit', label:'Security Deposit', ph:'$2,400'},
+      {id:'le_late', label:'Late Fee', ph:'$100 after 5 days'},
+      {id:'le_pets', label:'Pets Allowed', ph:'No'},
+      {id:'le_parking', label:'Parking', ph:'1 assigned space'},
+      {id:'le_utilities', label:'Tenant Pays Utilities', ph:'Electric, Internet'},
+      {id:'le_contact', label:'Manager / Emergency Contact', ph:'(555) 123-4567'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">RESIDENTIAL LEASE AGREEMENT</div><div class="doc-subtitle">Fixed Term Tenancy</div></div>
+    <div class="doc-section-title">Parties</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Landlord / Owner</div><div class="doc-field-value">${f.le_landlord||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Tenant(s)</div><div class="doc-field-value">${f.le_tenant||'___'}</div></div></div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Property Address</div><div class="doc-field-value">${f.le_address||'___'}</div></div>
+    <div class="doc-section-title">Term</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Start Date</div><div class="doc-field-value">${f.le_start||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">End Date</div><div class="doc-field-value">${f.le_end||'___'}</div></div></div>
+    <div class="doc-section-title">Rent & Deposits</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Monthly Rent</div><div class="doc-field-value">${f.le_rent||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Due Date</div><div class="doc-field-value">${f.le_due||'1st'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Security Deposit</div><div class="doc-field-value">${f.le_deposit||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Late Fee</div><div class="doc-field-value">${f.le_late||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Pets</div><div class="doc-field-value">${f.le_pets||'No'}</div></div><div class="doc-field-box"><div class="doc-field-label">Parking</div><div class="doc-field-value">${f.le_parking||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Tenant Pays</div><div class="doc-field-value">${f.le_utilities||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Emergency Contact</div><div class="doc-field-value">${f.le_contact||'___'}</div></div></div>
+    <div class="doc-section-title">Conditions</div>
+    <p>Tenant agrees to: pay rent on time; maintain clean premises; not sublet without written approval; permit access with 24-hour notice; make no alterations without consent. Landlord agrees to maintain habitable conditions and return deposit per applicable state law.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Landlord / Agent / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Tenant Signature / Date</div><div class="doc-sig-line" style="margin-top:20px"></div><div class="doc-sig-label">Tenant (joint) / Date</div></div></div>
+    <div class="doc-notice">Template only. Real estate laws vary by state and city. Consult an attorney.</div></div>`
+  },
+  {
+    id: 'psa', icon: '📋', name: 'Purchase & Sale Contract', desc: 'Residential purchase offer with price, earnest money, contingencies, and closing date.',
+    fields: [
+      {id:'ps_date', label:'Offer Date', ph:'September 24, 2026'},
+      {id:'ps_buyer', label:'Buyer Name(s)', ph:'John & Jane Smith'},
+      {id:'ps_seller', label:'Seller Name(s)', ph:'Robert Johnson'},
+      {id:'ps_address', label:'Property Address', ph:'7890 Oak Ave, Los Angeles, CA 90001'},
+      {id:'ps_price', label:'Purchase Price', ph:'$625,000'},
+      {id:'ps_earnest', label:'Earnest Money Deposit', ph:'$12,500'},
+      {id:'ps_down', label:'Down Payment (%)', ph:'20%'},
+      {id:'ps_financing', label:'Financing Type', ph:'Conventional 30-Year Fixed'},
+      {id:'ps_inspect', label:'Inspection Period (days)', ph:'10'},
+      {id:'ps_close', label:'Target Closing Date', ph:'November 15, 2026'},
+      {id:'ps_inclusions', label:'Included Items', ph:'Refrigerator, washer, dryer'},
+      {id:'ps_buyer_agent', label:"Buyer's Agent Name", ph:'Sarah Johnson'},
+      {id:'ps_sell_agent', label:"Seller's Agent Name", ph:'Mike Davis'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">RESIDENTIAL PURCHASE & SALE CONTRACT</div><div class="doc-subtitle">Offer to Purchase Real Property</div></div>
+    <div class="doc-section-title">Parties</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Buyer(s)</div><div class="doc-field-value">${f.ps_buyer||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Seller(s)</div><div class="doc-field-value">${f.ps_seller||'___'}</div></div></div>
+    <div class="doc-section-title">Property</div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Property Address</div><div class="doc-field-value">${f.ps_address||'___'}</div></div>
+    <div class="doc-section-title">Purchase Terms</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Purchase Price</div><div class="doc-field-value">${f.ps_price||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Earnest Money</div><div class="doc-field-value">${f.ps_earnest||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Down Payment</div><div class="doc-field-value">${f.ps_down||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Financing</div><div class="doc-field-value">${f.ps_financing||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Inspection Period</div><div class="doc-field-value">${f.ps_inspect||'___'} days</div></div><div class="doc-field-box"><div class="doc-field-label">Target Close</div><div class="doc-field-value">${f.ps_close||'___'}</div></div></div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Included Items</div><div class="doc-field-value">${f.ps_inclusions||'___'}</div></div>
+    <div class="doc-section-title">Contingencies</div>
+    <p>This offer is contingent upon: (1) Buyer's inspection and approval within ${f.ps_inspect||'___'} days; (2) Buyer obtaining financing approval; (3) title being conveyed free and clear of all liens and encumbrances; (4) property appraising at or above purchase price.</p>
+    <div class="doc-section-title">Agents</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Buyer's Agent</div><div class="doc-field-value">${f.ps_buyer_agent||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Seller's Agent</div><div class="doc-field-value">${f.ps_sell_agent||'___'}</div></div></div>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Buyer Signature / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Seller Signature / Date — Acceptance</div></div></div>
+    <div class="doc-notice">Template only — not a substitute for a state-approved contract form. Consult a licensed attorney.</div></div>`
+  },
+  {
+    id: 'commission_agr', icon: '💼', name: 'Commission Agreement', desc: 'Broker–agent split, annual cap, transaction fees, E&O, independent contractor terms.',
+    fields: [
+      {id:'ca_date', label:'Agreement Date', ph:'September 24, 2026'},
+      {id:'ca_broker', label:'Brokerage Name', ph:'Premier Realty Group'},
+      {id:'ca_agent', label:'Agent Name', ph:'Sarah Johnson'},
+      {id:'ca_license', label:'Agent License #', ph:'CA-DRE 01234567'},
+      {id:'ca_split', label:"Agent Commission Split (%)", ph:'70%'},
+      {id:'ca_broker_split', label:"Broker Split (%)", ph:'30%'},
+      {id:'ca_cap', label:'Annual Cap', ph:'$25,000'},
+      {id:'ca_tx_fee', label:'Transaction Fee per Deal', ph:'$395'},
+      {id:'ca_eo', label:'E&O Insurance / year', ph:'$600'},
+      {id:'ca_effective', label:'Effective Date', ph:'January 1, 2027'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">INDEPENDENT CONTRACTOR COMMISSION AGREEMENT</div><div class="doc-subtitle">Broker–Agent Compensation Plan</div></div>
+    <div class="doc-section-title">Parties</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Brokerage</div><div class="doc-field-value">${f.ca_broker||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Agent</div><div class="doc-field-value">${f.ca_agent||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">License #</div><div class="doc-field-value">${f.ca_license||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Effective Date</div><div class="doc-field-value">${f.ca_effective||'___'}</div></div></div>
+    <div class="doc-section-title">Commission Structure</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Agent Share</div><div class="doc-field-value">${f.ca_split||'___'} of gross commission</div></div><div class="doc-field-box"><div class="doc-field-label">Broker Share</div><div class="doc-field-value">${f.ca_broker_split||'___'} of gross commission</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Annual Cap</div><div class="doc-field-value">${f.ca_cap||'___'} (100% to agent after cap)</div></div><div class="doc-field-box"><div class="doc-field-label">Transaction Fee</div><div class="doc-field-value">${f.ca_tx_fee||'___'} per closing</div></div></div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">E&O Insurance</div><div class="doc-field-value">${f.ca_eo||'___'} per year</div></div>
+    <div class="doc-section-title">Independent Contractor</div>
+    <p>Agent is an independent contractor, not an employee. Agent is responsible for all self-employment taxes, business expenses, and legal compliance. Broker does not control the means or methods by which Agent performs services.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Designated Broker / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Agent Signature / Date</div></div></div>
+    <div class="doc-notice">Template only. State contractor laws vary. Consult an attorney.</div></div>`
+  },
+  {
+    id: 'referral', icon: '🔗', name: 'Referral Agreement', desc: 'Agent-to-agent referral: client info, fee percentage, expiry, and both agent signatures.',
+    fields: [
+      {id:'rf_date', label:'Agreement Date', ph:'September 24, 2026'},
+      {id:'rf_referring', label:'Referring Agent / Brokerage', ph:'John Davis — ABC Realty'},
+      {id:'rf_receiving', label:'Receiving Agent / Brokerage', ph:'Sarah Johnson — Premier Realty'},
+      {id:'rf_client', label:'Referred Client Name', ph:'Michael Thompson'},
+      {id:'rf_type', label:'Referral Type', ph:'Buyer'},
+      {id:'rf_area', label:'Transaction Area', ph:'Miami, FL'},
+      {id:'rf_fee', label:'Referral Fee (%)', ph:'25%'},
+      {id:'rf_price', label:'Est. Transaction Price', ph:'$650,000'},
+      {id:'rf_expiry', label:'Agreement Expiry', ph:'December 31, 2026'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">REAL ESTATE REFERRAL AGREEMENT</div><div class="doc-subtitle">Agent-to-Agent Referral</div></div>
+    <div class="doc-section-title">Parties</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Referring Agent</div><div class="doc-field-value">${f.rf_referring||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Receiving Agent</div><div class="doc-field-value">${f.rf_receiving||'___'}</div></div></div>
+    <div class="doc-section-title">Referral Details</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Client Name</div><div class="doc-field-value">${f.rf_client||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Type</div><div class="doc-field-value">${f.rf_type||'Buyer / Seller'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Area</div><div class="doc-field-value">${f.rf_area||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Est. Price</div><div class="doc-field-value">${f.rf_price||'___'}</div></div></div>
+    <div class="doc-section-title">Referral Fee</div>
+    <p>Upon successful closing, Receiving Agent agrees to pay Referring Agent <strong>${f.rf_fee||'___'}</strong> of the gross commission earned. Fee is due at closing, disbursed from escrow. Agreement expires <strong>${f.rf_expiry||'___'}</strong>.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Referring Agent / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Receiving Agent / Date</div></div></div>
+    <div class="doc-notice">Verify referral fee regulations in your state — some require fees to flow through the broker. Template only.</div></div>`
+  },
+  {
+    id: 'loi', icon: '📝', name: 'Letter of Intent', desc: 'Non-binding LOI for residential and commercial purchase offers with key terms.',
+    fields: [
+      {id:'lo_date', label:'Letter Date', ph:'September 24, 2026'},
+      {id:'lo_buyer', label:'Buyer / Offeror', ph:'Smith Investment Group LLC'},
+      {id:'lo_seller', label:'Seller Name', ph:'Johnson Family Trust'},
+      {id:'lo_address', label:'Property Address', ph:'7890 Commerce Blvd, Los Angeles, CA'},
+      {id:'lo_price', label:'Proposed Purchase Price', ph:'$1,250,000'},
+      {id:'lo_earnest', label:'Earnest Money', ph:'$25,000'},
+      {id:'lo_dd', label:'Due Diligence Period (days)', ph:'30'},
+      {id:'lo_close', label:'Target Closing Date', ph:'December 1, 2026'},
+      {id:'lo_financing', label:'Financing Type', ph:'Conventional / Cash'},
+      {id:'lo_expiry', label:'LOI Expiry Date', ph:'October 15, 2026'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">LETTER OF INTENT</div><div class="doc-subtitle">Non-Binding — Real Estate Purchase</div></div>
+    <p>Date: <strong>${f.lo_date||'___'}</strong></p><p>Dear ${f.lo_seller||'Property Owner'},</p>
+    <p><strong>${f.lo_buyer||'Buyer'}</strong> ("Buyer") submits this non-binding Letter of Intent to purchase the property below, subject to execution of a formal Purchase & Sale Agreement.</p>
+    <div class="doc-section-title">Property</div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Property Address</div><div class="doc-field-value">${f.lo_address||'___'}</div></div>
+    <div class="doc-section-title">Proposed Terms</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Purchase Price</div><div class="doc-field-value">${f.lo_price||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Earnest Money</div><div class="doc-field-value">${f.lo_earnest||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Due Diligence</div><div class="doc-field-value">${f.lo_dd||'___'} days from PSA</div></div><div class="doc-field-box"><div class="doc-field-label">Target Close</div><div class="doc-field-value">${f.lo_close||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Financing</div><div class="doc-field-value">${f.lo_financing||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">LOI Expires</div><div class="doc-field-value">${f.lo_expiry||'___'}</div></div></div>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Buyer / Authorized Rep / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Seller — ☐ Accepted ☐ Counter ☐ Rejected</div></div></div>
+    <div class="doc-notice">NON-BINDING. No enforceable agreement until both parties sign a formal PSA. Consult a licensed attorney.</div></div>`
+  },
+  {
+    id: 'disclosure', icon: '⚠️', name: 'Property Disclosure Form', desc: "Seller's disclosure of known defects, structural issues, systems status, and history.",
+    fields: [
+      {id:'pd_date', label:'Disclosure Date', ph:'September 24, 2026'},
+      {id:'pd_seller', label:'Seller Name(s)', ph:'Robert & Linda Johnson'},
+      {id:'pd_address', label:'Property Address', ph:'1234 Elm Street, Los Angeles, CA 90001'},
+      {id:'pd_roof', label:'Roof Age / Condition', ph:'10 years — Good condition'},
+      {id:'pd_hvac', label:'HVAC Age / Condition', ph:'5 years — Good condition'},
+      {id:'pd_plumbing', label:'Plumbing Issues', ph:'None known'},
+      {id:'pd_electrical', label:'Electrical Issues', ph:'None known'},
+      {id:'pd_foundation', label:'Foundation Issues', ph:'None known'},
+      {id:'pd_flood', label:'Flood Zone', ph:'No'},
+      {id:'pd_pest', label:'Pest / Termite History', ph:'Inspection 2024 — clear'},
+      {id:'pd_mold', label:'Mold / Water Damage', ph:'None known'},
+      {id:'pd_additions', label:'Unpermitted Additions', ph:'None'},
+      {id:'pd_other', label:'Other Known Defects', ph:'None'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">SELLER'S PROPERTY DISCLOSURE STATEMENT</div><div class="doc-subtitle">Residential Real Estate</div></div>
+    <p>Seller(s) <strong>${f.pd_seller||'___'}</strong> hereby disclose known conditions of the property at <strong>${f.pd_address||'___'}</strong> as of <strong>${f.pd_date||'___'}</strong>.</p>
+    <div class="doc-section-title">Structure & Systems</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Roof Age / Condition</div><div class="doc-field-value">${f.pd_roof||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">HVAC Age / Condition</div><div class="doc-field-value">${f.pd_hvac||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Plumbing Issues</div><div class="doc-field-value">${f.pd_plumbing||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Electrical Issues</div><div class="doc-field-value">${f.pd_electrical||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Foundation Issues</div><div class="doc-field-value">${f.pd_foundation||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Flood Zone</div><div class="doc-field-value">${f.pd_flood||'___'}</div></div></div>
+    <div class="doc-section-title">History</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Pest / Termite History</div><div class="doc-field-value">${f.pd_pest||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Mold / Water Damage</div><div class="doc-field-value">${f.pd_mold||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Unpermitted Additions</div><div class="doc-field-value">${f.pd_additions||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Other Known Defects</div><div class="doc-field-value">${f.pd_other||'None'}</div></div></div>
+    <div class="doc-section-title">Seller Certification</div>
+    <p>Seller certifies this disclosure is complete and accurate to the best of Seller's knowledge. Seller is not aware of any material defects other than those disclosed above.</p>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Seller Signature / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Buyer Received / Date</div></div></div>
+    <div class="doc-notice">Template only. Many states have mandatory disclosure forms — use your state's required form. Consult an attorney.</div></div>`
+  },
+  {
+    id: 'moveinout', icon: '🏠', name: 'Move-In / Move-Out Checklist', desc: 'Room-by-room unit condition checklist — used at move-in and again at move-out.',
+    fields: [
+      {id:'mi_date', label:'Inspection Date', ph:'October 1, 2026'},
+      {id:'mi_type', label:'Type (Move-In / Move-Out)', ph:'Move-In'},
+      {id:'mi_address', label:'Property Address', ph:'456 Pine St Apt 2B, Los Angeles, CA'},
+      {id:'mi_tenant', label:'Tenant Name(s)', ph:'John Smith'},
+      {id:'mi_landlord', label:'Landlord / Agent', ph:'Premier Properties LLC'},
+      {id:'mi_living', label:'Living Room Condition', ph:'Good — minor scuff on wall'},
+      {id:'mi_kitchen', label:'Kitchen Condition', ph:'Good — clean appliances'},
+      {id:'mi_bath', label:'Bathroom Condition', ph:'Good — no issues'},
+      {id:'mi_bed1', label:'Bedroom 1 Condition', ph:'Good'},
+      {id:'mi_bed2', label:'Bedroom 2 Condition (if any)', ph:'N/A'},
+      {id:'mi_exterior', label:'Exterior / Common Areas', ph:'Good'},
+      {id:'mi_notes', label:'Additional Notes', ph:'Walls freshly painted. New carpet.'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">MOVE-IN / MOVE-OUT INSPECTION CHECKLIST</div><div class="doc-subtitle">Unit Condition Report — ${f.mi_type||'Move-In / Move-Out'}</div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Inspection Date</div><div class="doc-field-value">${f.mi_date||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Type</div><div class="doc-field-value">${f.mi_type||'Move-In / Move-Out'}</div></div></div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Property Address</div><div class="doc-field-value">${f.mi_address||'___'}</div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Tenant</div><div class="doc-field-value">${f.mi_tenant||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Landlord / Agent</div><div class="doc-field-value">${f.mi_landlord||'___'}</div></div></div>
+    <div class="doc-section-title">Room-by-Room Condition</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Living Room</div><div class="doc-field-value">${f.mi_living||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Kitchen</div><div class="doc-field-value">${f.mi_kitchen||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Bathroom</div><div class="doc-field-value">${f.mi_bath||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">Bedroom 1</div><div class="doc-field-value">${f.mi_bed1||'___'}</div></div></div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Bedroom 2</div><div class="doc-field-value">${f.mi_bed2||'N/A'}</div></div><div class="doc-field-box"><div class="doc-field-label">Exterior / Common</div><div class="doc-field-value">${f.mi_exterior||'___'}</div></div></div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Additional Notes</div><div class="doc-field-value">${f.mi_notes||'___'}</div></div>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Landlord / Agent / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Tenant Signature / Date</div></div></div>
+    <div class="doc-notice">Keep a signed copy for both landlord and tenant. Photographs are strongly recommended at move-in and move-out.</div></div>`
+  },
+  {
+    id: 'renewal', icon: '🔄', name: 'Lease Renewal Agreement', desc: 'Renew an existing lease — new rent, updated term, any changed conditions, signatures.',
+    fields: [
+      {id:'lr_date', label:'Renewal Date', ph:'September 24, 2026'},
+      {id:'lr_landlord', label:'Landlord Name', ph:'Premier Properties LLC'},
+      {id:'lr_tenant', label:'Tenant Name(s)', ph:'John Smith'},
+      {id:'lr_address', label:'Property Address', ph:'456 Pine St Apt 2B, Los Angeles, CA'},
+      {id:'lr_orig_start', label:'Original Lease Start', ph:'October 1, 2025'},
+      {id:'lr_new_start', label:'Renewal Start Date', ph:'October 1, 2026'},
+      {id:'lr_new_end', label:'Renewal End Date', ph:'September 30, 2027'},
+      {id:'lr_old_rent', label:'Current Monthly Rent', ph:'$2,300'},
+      {id:'lr_new_rent', label:'New Monthly Rent', ph:'$2,400'},
+      {id:'lr_changes', label:'Any Other Changed Terms', ph:'None — all other terms remain the same'},
+    ],
+    gen: f => `<div class="doc-sheet"><div class="doc-header"><div class="doc-logo">RE DOCS</div><div class="doc-title">LEASE RENEWAL AGREEMENT</div><div class="doc-subtitle">Extension of Existing Tenancy</div></div>
+    <p>This Renewal Agreement, dated <strong>${f.lr_date||'___'}</strong>, extends the lease between Landlord <strong>${f.lr_landlord||'___'}</strong> and Tenant(s) <strong>${f.lr_tenant||'___'}</strong> for the property at <strong>${f.lr_address||'___'}</strong> (originally commencing ${f.lr_orig_start||'___'}).</p>
+    <div class="doc-section-title">Renewal Term</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">New Start Date</div><div class="doc-field-value">${f.lr_new_start||'___'}</div></div><div class="doc-field-box"><div class="doc-field-label">New End Date</div><div class="doc-field-value">${f.lr_new_end||'___'}</div></div></div>
+    <div class="doc-section-title">Rent Adjustment</div>
+    <div class="doc-field-row"><div class="doc-field-box"><div class="doc-field-label">Current Rent</div><div class="doc-field-value">${f.lr_old_rent||'___'} / month</div></div><div class="doc-field-box"><div class="doc-field-label">New Rent</div><div class="doc-field-value">${f.lr_new_rent||'___'} / month</div></div></div>
+    <div class="doc-section-title">Changed Terms</div>
+    <div class="doc-field-box" style="margin-bottom:9px"><div class="doc-field-label">Other Changes</div><div class="doc-field-value">${f.lr_changes||'None — all other original lease terms remain in full force and effect'}</div></div>
+    <p>Except as specifically modified above, all terms and conditions of the original Lease Agreement remain in full force and effect and are incorporated herein by reference.</p>
+    <div class="doc-section-title">Signatures</div>
+    <div class="doc-sig-block"><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Landlord / Agent / Date</div></div><div class="doc-sig-col"><div class="doc-sig-line"></div><div class="doc-sig-label">Tenant Signature / Date</div></div></div>
+    <div class="doc-notice">Template only. Consult a licensed attorney and verify compliance with local rent control laws.</div></div>`
+  },
+];
+
+// ── DEAL SETUP ──────────────────────────────────────────────────────────
+let dealData = load('redocs_deal', {});
+
+function switchTab(tab) {
+  document.getElementById('panel-deal').style.display     = tab === 'deal'     ? '' : 'none';
+  document.getElementById('panel-docs').style.display     = tab === 'docs'     ? '' : 'none';
+  document.getElementById('panel-calendar').style.display = tab === 'calendar' ? '' : 'none';
+  ['deal','docs','calendar'].forEach(t => {
+    const btn = document.getElementById('tab-' + t);
+    if (!btn) return;
+    const active = t === tab;
+    btn.style.color       = active ? '#2ecc8e' : 'var(--text3)';
+    btn.style.borderBottom = active ? '3px solid #2ecc8e' : '3px solid transparent';
+  });
+  if (tab === 'calendar') renderCalendar();
+}
+
+// ── CONTRACT DEADLINE CALENDAR ───────────────────────────────────────────
+function renderCalendar() {
+  const closeRaw = dealData.close || document.getElementById('deal_close')?.value || '';
+  const todayRaw = dealData.today || document.getElementById('deal_today')?.value || '';
+  const address  = dealData.address || 'This Property';
+  const noDate   = document.getElementById('cal-no-date');
+  const grid     = document.getElementById('cal-grid');
+  const timeline = document.getElementById('cal-timeline');
+
+  // Try parsing close date
+  const closeDate = new Date(closeRaw);
+  const todayDate = todayRaw ? new Date(todayRaw) : new Date();
+
+  if (!closeRaw || isNaN(closeDate.getTime())) {
+    noDate.style.display = 'block';
+    grid.style.display   = 'none';
+    timeline.innerHTML   = '';
+    return;
+  }
+  noDate.style.display = 'none';
+  grid.style.display   = 'grid';
+
+  // Calculate deadlines relative to close date (standard CA residential)
+  const deadlines = [
+    { name: 'Seller Disclosures Due',        daysBeforeClose: 21, icon: '📄', note: 'Buyer must receive all seller disclosures' },
+    { name: 'Inspection Contingency',         daysBeforeClose: 17, icon: '🔍', note: 'Buyer must complete physical inspection' },
+    { name: 'Appraisal Contingency',          daysBeforeClose: 17, icon: '🏠', note: 'Lender appraisal must come in at or above price' },
+    { name: 'Loan Contingency',               daysBeforeClose: 21, icon: '🏦', note: 'Buyer must receive final loan approval' },
+    { name: 'Homeowner Insurance Bound',      daysBeforeClose:  7, icon: '🛡️', note: 'Lender requires proof of insurance before close' },
+    { name: 'Final Walk-Through',             daysBeforeClose:  1, icon: '🚶', note: 'Buyer confirms property condition before signing' },
+    { name: 'Signing / Escrow Docs',          daysBeforeClose:  2, icon: '✍️', note: 'Buyer and seller sign closing documents' },
+    { name: 'Closing / Funding',              daysBeforeClose:  0, icon: '🎉', note: 'Deed records — keys transfer to buyer' },
+    { name: 'Earnest Money Deposit Due',      daysBeforeClose: 25, icon: '💰', note: 'Buyer wires earnest money to escrow' },
+    { name: 'Repair Request Deadline',        daysBeforeClose: 14, icon: '🔧', note: 'Buyer submits repair requests after inspection' },
+    { name: 'Contingency Removal',            daysBeforeClose: 10, icon: '✅', note: 'Buyer removes remaining contingencies in writing' },
+    { name: 'Title Report Review',            daysBeforeClose: 18, icon: '📋', note: 'Buyer reviews title for liens or encumbrances' },
+  ];
+
+  // Sort soonest (fewest days before close) first → most urgent at top
+  deadlines.sort((a, b) => a.daysBeforeClose - b.daysBeforeClose);
+
+  function getDeadlineDate(dbc) {
+    const d = new Date(closeDate);
+    d.setDate(d.getDate() - dbc);
+    return d;
+  }
+
+  function urgencyClass(deadlineDate) {
+    const msLeft = deadlineDate - todayDate;
+    const daysLeft = msLeft / (1000 * 60 * 60 * 24);
+    if (daysLeft < 0)   return { bg: '#fdeaea', border: '#e05b5b', badge: '#e05b5b', label: 'OVERDUE', textColor: '#c0392b' };
+    if (daysLeft <= 3)  return { bg: '#fff4e0', border: '#E9A84C', badge: '#E9A84C', label: 'DUE SOON', textColor: '#b7770a' };
+    if (daysLeft <= 7)  return { bg: '#fffbe6', border: '#f0c040', badge: '#f0c040', label: 'THIS WEEK', textColor: '#8a6800' };
+    return { bg: 'var(--surface)', border: 'var(--border)', badge: 'var(--navy)', label: '', textColor: 'var(--text2)' };
+  }
+
+  function fmt(d) {
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function daysLabel(deadlineDate) {
+    const msLeft = deadlineDate - todayDate;
+    const d = Math.round(msLeft / (1000 * 60 * 60 * 24));
+    if (d === 0)  return 'Today';
+    if (d === 1)  return 'Tomorrow';
+    if (d === -1) return '1 day ago';
+    if (d < 0)   return `${Math.abs(d)} days ago`;
+    return `${d} days away`;
+  }
+
+  // Build Google Calendar URL for a single-day event
+  function gcalLink(title, date, note) {
+    const pad = n => String(n).padStart(2, '0');
+    const y = date.getFullYear();
+    const m = pad(date.getMonth() + 1);
+    const d = pad(date.getDate());
+    const dateStr = `${y}${m}${d}`;
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: `${title} — ${address}`,
+      dates: `${dateStr}/${dateStr}`,
+      details: note
+    });
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
+  }
+
+  grid.innerHTML = deadlines.map(dl => {
+    const ddDate = getDeadlineDate(dl.daysBeforeClose);
+    const urg    = urgencyClass(ddDate);
+    const gcal   = gcalLink(dl.name, ddDate, dl.note);
+    return `
+      <div style="background:${urg.bg};border:1.5px solid ${urg.border};border-radius:12px;padding:16px;position:relative">
+        ${urg.label ? `<div style="position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;background:${urg.badge};color:#fff;border-radius:4px;padding:2px 7px;letter-spacing:.06em">${urg.label}</div>` : ''}
+        <div style="font-size:22px;margin-bottom:8px">${dl.icon}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px">${dl.name}</div>
+        <div style="font-size:13px;font-weight:700;color:${urg.badge};margin-bottom:4px">${fmt(ddDate)}</div>
+        <div style="font-size:11px;color:${urg.textColor};margin-bottom:6px">${daysLabel(ddDate)}</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:10px">${dl.note}</div>
+        <a href="${gcal}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--navy);background:var(--gold-lt);border:1px solid var(--border);border-radius:6px;padding:5px 10px;text-decoration:none;white-space:nowrap">📅 Add to Google Calendar</a>
+      </div>`;
+  }).join('');
+
+  // Timeline bar
+  const firstDate = getDeadlineDate(Math.max(...deadlines.map(d=>d.daysBeforeClose)));
+  const totalSpan = closeDate - firstDate;
+  timeline.innerHTML = `
+    <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">📍 Timeline — ${address}</div>
+    <div style="position:relative;height:6px;background:var(--border);border-radius:3px;margin-bottom:8px">
+      ${deadlines.map(dl => {
+        const ddDate = getDeadlineDate(dl.daysBeforeClose);
+        const pct    = Math.max(0, Math.min(100, ((ddDate - firstDate) / totalSpan) * 100));
+        const urg    = urgencyClass(ddDate);
+        return `<div title="${dl.name}: ${fmt(ddDate)}" style="position:absolute;left:${pct}%;top:-4px;width:14px;height:14px;border-radius:50%;background:${urg.badge};border:2px solid #fff;transform:translateX(-50%);cursor:default"></div>`;
+      }).join('')}
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3)">
+      <span>${fmt(firstDate)}</span><span>Close: ${fmt(closeDate)}</span>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e05b5b;display:inline-block"></span>Overdue</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#E9A84C;display:inline-block"></span>Due soon (≤3 days)</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#f0c040;display:inline-block"></span>This week</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:var(--navy);display:inline-block"></span>On track</span>
+    </div>`;
+}
+
+function printCalendar() {
+  // Build a print-friendly page in a new window
+  const grid  = document.getElementById('cal-grid');
+  const tline = document.getElementById('cal-timeline');
+  const address = dealData.address || 'Property';
+  if (!grid || grid.style.display === 'none') {
+    alert('Please enter a closing date in Deal Setup first.');
+    return;
+  }
+  const win = window.open('', '_blank', 'width=900,height=700');
+  if (!win) { alert('Pop-up blocked — allow pop-ups to print.'); return; }
+  win.document.write(`<!doctype html><html><head>
+    <meta charset=utf-8>
+    <title>RE Docs — Contract Deadlines: ${address}</title>
+    <style>
+      body{font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;margin:28px 36px;color:#1C2B28}
+      h1{font-size:20px;margin-bottom:4px}
+      .sub{font-size:13px;color:#666;margin-bottom:20px}
+      .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+      .card{border:1.5px solid #ccc;border-radius:8px;padding:12px;page-break-inside:avoid}
+      .card .icon{font-size:20px;margin-bottom:6px}
+      .card .name{font-weight:700;font-size:13px;margin-bottom:4px}
+      .card .date{font-size:12px;font-weight:700;color:#2A7C6F;margin-bottom:3px}
+      .card .timing{font-size:11px;color:#888;margin-bottom:5px}
+      .card .note{font-size:11px;color:#555;line-height:1.5}
+      .overdue{background:#fdeaea;border-color:#e05b5b}
+      .soon{background:#fff4e0;border-color:#E9A84C}
+      .week{background:#fffbe6;border-color:#f0c040}
+      .timeline{margin-top:20px;padding-top:16px;border-top:1px solid #ccc;font-size:12px;color:#555}
+      @media print{.no-print{display:none!important}}
+    </style>
+  </head><body>
+    <h1>📅 Contract Deadlines — ${address}</h1>
+    <div class="sub">Generated by RE Docs on ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</div>
+    <div class="grid">${grid.innerHTML}</div>
+    <div class="timeline">${tline.innerHTML}</div>
+    <div class="no-print" style="margin-top:24px;text-align:center">
+      <button onclick="window.print()" style="padding:10px 28px;font-size:14px;background:#2A7C6F;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨️ Print</button>
+    </div>
+  </body></html>`);
+  win.document.close();
+  win.focus();
+}
+
+function saveDeal() {
+  const fields = ['agent','brokerage','license','phone','address','price','close','today',
+                  'buyer','seller','other_agent','earnest','comm_pct','split_pct','txn_fee','ref_fee'];
+  fields.forEach(f => {
+    const el = document.getElementById('deal_' + f);
+    if (el) dealData[f] = el.value;
+  });
+  store('redocs_deal', dealData);
+}
+
+function loadDealFields() {
+  Object.keys(dealData).forEach(k => {
+    const el = document.getElementById('deal_' + k);
+    if (el) el.value = dealData[k] || '';
+  });
+  calcCommission();
+}
+
+function calcCommission() {
+  const price = parseFloat((dealData.price || document.getElementById('deal_price')?.value || '').replace(/[^0-9.]/g,'')) || 0;
+  const commPct = parseFloat((dealData.comm_pct || document.getElementById('deal_comm_pct')?.value || '').replace(/[^0-9.]/g,'')) || 0;
+  const splitPct = parseFloat((dealData.split_pct || document.getElementById('deal_split_pct')?.value || '').replace(/[^0-9.]/g,'')) || 0;
+  const txnFee = parseFloat((dealData.txn_fee || document.getElementById('deal_txn_fee')?.value || '').replace(/[^0-9.]/g,'')) || 0;
+  const refFee = parseFloat((dealData.ref_fee || document.getElementById('deal_ref_fee')?.value || '').replace(/[^0-9.]/g,'')) || 0;
+
+  const gross = price * (commPct / 100);
+  const agentShare = gross * (splitPct / 100);
+  const brokerTakes = gross - agentShare;
+  const fees = txnFee + refFee;
+  const net = agentShare - fees;
+
+  const fmt = n => n > 0 ? '$' + n.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2}) : '—';
+  const el = id => document.getElementById(id);
+  if (el('calc_gross')) el('calc_gross').textContent = fmt(gross);
+  if (el('calc_broker')) el('calc_broker').textContent = fmt(brokerTakes);
+  if (el('calc_fees')) el('calc_fees').textContent = fmt(fees);
+  if (el('calc_net')) el('calc_net').textContent = fmt(net > 0 ? net : 0);
+}
+
+function applyDealToAllDocs() {
+  saveDeal();
+  // Map deal fields → doc field IDs across all docs
+  const map = {
+    // agent
+    'br_agent': dealData.agent, 'la_agent': dealData.agent, 'ps_buyer_agent': dealData.agent,
+    'ps_sell_agent': dealData.agent, 'ca_agent': dealData.agent, 'ra_agent': dealData.agent,
+    'lo_agent': dealData.agent, 'di_agent': dealData.agent,
+    // brokerage
+    'br_brokerage': dealData.brokerage, 'la_brokerage': dealData.brokerage,
+    'ca_brokerage': dealData.brokerage,
+    // phone
+    'br_phone': dealData.phone, 'la_phone': dealData.phone,
+    // address
+    'br_address': dealData.address, 'la_address': dealData.address,
+    'le_address': dealData.address, 'ps_address': dealData.address,
+    'lo_address': dealData.address, 'di_address': dealData.address,
+    'mi_address': dealData.address, 'lr_address': dealData.address,
+    // price
+    'la_price': dealData.price, 'ps_price': dealData.price, 'lo_price': dealData.price,
+    'le_rent': dealData.price, 'lr_new_rent': dealData.price,
+    // buyer/tenant
+    'br_buyer': dealData.buyer, 'ps_buyer': dealData.buyer, 'le_tenant': dealData.buyer,
+    'lo_buyer': dealData.buyer, 'lr_tenant': dealData.buyer, 'mi_tenant': dealData.buyer,
+    // seller/landlord
+    'ps_seller': dealData.seller, 'la_seller': dealData.seller, 'le_landlord': dealData.seller,
+    'lo_seller': dealData.seller, 'di_seller': dealData.seller, 'mi_landlord': dealData.seller,
+    'lr_landlord': dealData.seller,
+    // dates
+    'br_date': dealData.today, 'la_date': dealData.today, 'le_date': dealData.today,
+    'ps_date': dealData.today, 'ca_date': dealData.today, 'ra_date': dealData.today,
+    'lo_date': dealData.today, 'di_date': dealData.today, 'mi_date': dealData.today,
+    'lr_date': dealData.today,
+    // close date
+    'ps_close': dealData.close, 'br_close': dealData.close, 'lo_close': dealData.close,
+    // commission
+    'la_comm': dealData.comm_pct, 'ca_comm': dealData.comm_pct,
+    'la_split': dealData.split_pct,
+    // earnest
+    'ps_earnest': dealData.earnest,
+    // other agent
+    'ra_ref_agent': dealData.other_agent,
+  };
+  // Store in localStorage so each doc picks it up when opened
+  store('redocs_deal_map', map);
+  renderDocGrid();
+}
+
+// ── AUTH ────────────────────────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function showAuth(tab) {
+  showScreen('auth');
+  switchAuthTab(tab);
+}
+function switchAuthTab(tab) {
+  document.getElementById('login-form').style.display = tab === 'login' ? '' : 'none';
+  document.getElementById('signup-form').style.display = tab === 'signup' ? '' : 'none';
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+  hideErr();
+}
+function showErr(msg) {
+  const el = document.getElementById('auth-err');
+  el.textContent = msg; el.classList.add('show');
+}
+function hideErr() { document.getElementById('auth-err').classList.remove('show'); }
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass = document.getElementById('login-pass').value;
+  if (!email || !pass) { showErr('Please enter your email and password.'); return; }
+  const found = users.find(u => u.email === email && u.pass === pass);
+  if (!found) { showErr('Email or password is incorrect.'); return; }
+  currentUser = found;
+  store('redocs_user', currentUser);
+  unlocked = load('redocs_unlocked_' + email, []);
+  enterApp();
+}
+function doSignup() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim().toLowerCase();
+  const pass = document.getElementById('signup-pass').value;
+  const pass2 = document.getElementById('signup-pass2').value;
+  if (!name) { showErr('Please enter your full name.'); return; }
+  if (!email || !email.includes('@')) { showErr('Please enter a valid email address.'); return; }
+  if (pass.length < 8) { showErr('Password must be at least 8 characters.'); return; }
+  const strength = getPasswordStrength(pass);
+  if (strength.score < 1) { showErr('Password is too weak. Add numbers or symbols.'); return; }
+  if (pass !== pass2) { showErr('Passwords do not match — please re-enter.'); return; }
+  if (users.find(u => u.email === email)) { showErr('An account with that email already exists. Please log in.'); return; }
+  const user = { name, email, pass };
+  users.push(user);
+  store('redocs_users', users);
+  currentUser = user;
+  store('redocs_user', currentUser);
+  unlocked = [];
+  enterApp();
+}
+
+// ── PASSWORD HELPERS ─────────────────────────────────────────────────────
+function getPasswordStrength(pw) {
+  let score = 0;
+  if (pw.length >= 8) score++;
+  if (pw.length >= 12) score++;
+  if (/[A-Z]/.test(pw)) score++;
+  if (/[0-9]/.test(pw)) score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
+  const label = score <= 1 ? 'Weak' : score <= 3 ? 'Fair' : 'Strong';
+  const color = score <= 1 ? '#e05b5b' : score <= 3 ? '#E9A84C' : '#2A7C6F';
+  const pct = Math.min(100, score * 20) + '%';
+  return { score, label, color, pct };
+}
+function checkStrength() {
+  const pw = document.getElementById('signup-pass').value;
+  const bar = document.getElementById('pw-strength-bar');
+  const fill = document.getElementById('pw-strength-fill');
+  const lbl = document.getElementById('pw-strength-label');
+  if (!pw) { bar.style.display = 'none'; lbl.style.display = 'none'; return; }
+  bar.style.display = 'block'; lbl.style.display = 'block';
+  const s = getPasswordStrength(pw);
+  fill.style.width = s.pct;
+  fill.style.background = s.color;
+  lbl.textContent = s.label;
+  lbl.style.color = s.color;
+  checkConfirm();
+}
+function checkConfirm() {
+  const pw = document.getElementById('signup-pass').value;
+  const pw2 = document.getElementById('signup-pass2').value;
+  const lbl = document.getElementById('pw-match-label');
+  if (!pw2) { lbl.style.display = 'none'; return; }
+  lbl.style.display = 'block';
+  if (pw === pw2) { lbl.textContent = '✓ Passwords match'; lbl.style.color = '#2A7C6F'; }
+  else { lbl.textContent = '✗ Passwords do not match'; lbl.style.color = '#e05b5b'; }
+}
+function togglePw(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+function doLogout() {
+  currentUser = null; unlocked = []; subscribed = false;
+  store('redocs_user', null);
+  closeEditor();
+  showScreen('landing');
+}
+
+// ── ROLE PICKER ─────────────────────────────────────────────────────────
+const ROLE_LABELS = {
+  buyer_agent: 'Buyer\'s Agent',
+  listing_agent: 'Listing Agent',
+  property_manager: 'Property Manager',
+  broker: 'Broker / Team Lead',
+  investor: 'Investor',
+  dual_agent: 'Dual Agent'
+};
+function selectRole(role) {
+  store('redocs_role', role);
+  const label = ROLE_LABELS[role] || role;
+  const el = document.getElementById('app-role-label');
+  if (el) el.textContent = '🏷 ' + label;
+  enterApp();
+}
+function switchRole() {
+  const userLabel = document.getElementById('role-user-label');
+  if (userLabel && currentUser) userLabel.textContent = currentUser.name || currentUser.email;
+  showScreen('role');
+}
+
+function enterApp() {
+  hideErr();
+  const savedRole = load('redocs_role', null);
+  // If no role saved yet, show role picker first
+  if (!savedRole) {
+    const userLabel = document.getElementById('role-user-label');
+    if (userLabel && currentUser) userLabel.textContent = currentUser.name || currentUser.email;
+    showScreen('role');
+    return;
+  }
+  // Role is saved — go straight to app
+  const label = ROLE_LABELS[savedRole] || savedRole;
+  const roleEl = document.getElementById('app-role-label');
+  if (roleEl) roleEl.textContent = '🏷 ' + label;
+  document.getElementById('app-user-label').textContent = currentUser.name || currentUser.email;
+  unlocked = load('redocs_unlocked_' + currentUser.email, []);
+  subscribed = load('redocs_subscribed_' + currentUser.email, false);
+  dealData = load('redocs_deal', {});
+  // Pre-fill agent name from account if not set
+  if (!dealData.agent && currentUser.name) dealData.agent = currentUser.name;
+  updateSubscriptionUI();
+  renderDocGrid();
+  renderRoleDashboard();
+  loadDealFields();
+  switchTab('deal');
+  showScreen('app');
+}
+function updateSubscriptionUI() {
+  const banner = document.getElementById('sub-banner');
+  const btnRow = document.getElementById('sub-btn-row');
+  if (subscribed) {
+    banner.style.display = 'block';
+    btnRow.style.display = 'none';
+  } else {
+    banner.style.display = 'none';
+    btnRow.style.display = 'block';
+  }
+}
+
+// ── ROLE DASHBOARD ──────────────────────────────────────────────────────
+const ROLE_DASHBOARDS = {
+
+  buyer_agent: {
+    label: "Buyer's Agent",
+    icon: '🏡',
+    tagline: "Represent buyers from offer to close — docs, deadlines, and commissions in one place.",
+    color: '#2A7C6F',
+    keyDocs: ['buyer_rep','psa','referral','commission_agr'],
+    equations: [
+      { label: 'Max Offer Price', formula: 'Pre-Approval Limit − Closing Costs − Down Payment', example: '$500K − $10K − $25K = $465K max offer' },
+      { label: 'Earnest Money (typical)', formula: 'Sale Price × 1–3%', example: '$500,000 × 2% = $10,000 earnest' },
+      { label: 'Down Payment', formula: 'Sale Price × Down %', example: '$500,000 × 20% = $100,000 down' },
+      { label: 'Buyer Closing Costs (est.)', formula: 'Sale Price × 2–5%', example: '$500,000 × 3% = $15,000 closing costs' },
+      { label: 'Your Gross Commission', formula: 'Sale Price × Buyer Commission %', example: '$500,000 × 2.5% = $12,500 gross' },
+      { label: 'Your Net Commission', formula: 'Gross × Your Split % − Transaction Fee − Referral Fee', example: '$12,500 × 70% − $395 = $8,355 net' },
+      { label: 'Monthly Payment (P&I)', formula: 'Loan × [r(1+r)^n] ÷ [(1+r)^n − 1]  where r = rate/12, n = months', example: '$400K at 7% / 30yr = $2,661/mo' },
+      { label: 'Debt-to-Income (DTI)', formula: '(Monthly Debts + New Payment) ÷ Gross Monthly Income', example: '($500 + $2,661) ÷ $8,000 = 39.5% DTI' },
+    ],
+    tips: [
+      '📋 Fill Deal Setup first — your Buyer Rep, Purchase Contract & Referral Agreement auto-fill.',
+      '📅 Track contingency deadlines: inspection (day 10), appraisal (day 17), loan (day 21).',
+      '💰 Use the commission calculator to show buyers your exact net — builds trust.',
+      '✉️ Use "Copy for Email" to send the Buyer Rep Agreement directly from the app.',
+    ]
+  },
+
+  listing_agent: {
+    label: 'Listing Agent', icon: '🏷', tagline: 'Price it right, market it fast, close with confidence.',
+    color: '#2A7C6F',
+    keyDocs: ['listing','psa','disclosure','commission_agr'],
+    equations: [
+      { label: 'Suggested List Price', formula: 'Average Comp Price/SqFt × Subject SqFt ± Adjustments', example: '$350/sqft × 1,800sqft = $630,000 list price' },
+      { label: 'Seller Net Proceeds', formula: 'Sale Price − Mortgage Payoff − Total Commission − Closing Costs − Repairs', example: '$600K − $320K − $18K − $6K − $4K = $252,000 net' },
+      { label: 'Total Commission Earned', formula: 'Sale Price × Total Commission %', example: '$600,000 × 5% = $30,000 gross commission' },
+      { label: 'Your Side of Commission', formula: 'Total Commission × Listing Side % (typically 50%)', example: '$30,000 × 50% = $15,000 your side' },
+      { label: 'Your Net After Split', formula: 'Your Side × Your Broker Split % − Transaction Fee', example: '$15,000 × 80% − $395 = $11,605 net' },
+      { label: 'Days on Market Target', formula: 'Based on local absorption rate: Months of Inventory × 30', example: '2 months inventory × 30 = 60 days avg DOM' },
+      { label: 'Price Reduction % Signal', formula: '(List Price − Offer Price) ÷ List Price × 100', example: '($630K − $610K) ÷ $630K = 3.2% below ask' },
+      { label: 'Seller Closing Costs (est.)', formula: 'Sale Price × 1–3% (title, escrow, transfer tax)', example: '$600,000 × 2% = $12,000 seller closing costs' },
+    ],
+    tips: [
+      '📋 Fill Deal Setup → Listing Agreement and Disclosure auto-fill seller info, address, price and commission.',
+      '📸 Price within 3% of market value — homes priced right sell 2x faster and closer to ask.',
+      '💰 Show seller their net sheet before any price conversation — numbers build trust.',
+      '⚠️ Disclosure form must be completed before listing goes live — use the app to fill it fast.',
+    ]
+  },
+
+  property_manager: {
+    label: 'Property Manager', icon: '🔑', tagline: 'Leases, move-ins, renewals and maintenance in one workflow.',
+    color: '#2A7C6F',
+    keyDocs: ['lease','moveinout','renewal','referral'],
+    equations: [
+      { label: 'Monthly Rent Range (1% Rule)', formula: 'Property Value × 1%', example: '$300,000 × 1% = $3,000/mo target rent' },
+      { label: 'Gross Rent Multiplier (GRM)', formula: 'Property Price ÷ Annual Gross Rent', example: '$300,000 ÷ $36,000 = 8.3 GRM' },
+      { label: 'Security Deposit Max (CA)', formula: 'Typically 2× Monthly Rent (unfurnished)', example: '$2,500/mo × 2 = $5,000 max deposit' },
+      { label: 'Late Fee (typical)', formula: 'Flat fee or 5–10% of Monthly Rent (check state law)', example: '$2,500 × 5% = $125 late fee after grace period' },
+      { label: 'Vacancy Rate', formula: 'Vacant Days ÷ Total Days in Period × 100', example: '18 ÷ 365 × 100 = 4.9% vacancy rate' },
+      { label: 'Net Operating Income (NOI)', formula: 'Gross Rent − Vacancy Loss − Operating Expenses', example: '$36K − $1.8K − $8K = $26,200 NOI' },
+      { label: 'Rent Increase % (renewal)', formula: '(New Rent − Old Rent) ÷ Old Rent × 100', example: '($2,600 − $2,500) ÷ $2,500 = 4% increase' },
+      { label: 'Property Mgmt Fee', formula: 'Monthly Rent × Management Fee % (typically 8–12%)', example: '$2,500 × 10% = $250/mo management fee' },
+    ],
+    tips: [
+      '📋 Fill Deal Setup with tenant + landlord info → Lease Agreement, Move-In Checklist and Renewal all pre-fill.',
+      '🔍 Complete the Move-In Checklist on day one — it protects both parties at move-out.',
+      '📅 Send Lease Renewal 60–90 days before expiry — use the Renewal Agreement in Documents.',
+      '💰 Track all fees and deposits separately — use the commission calculator for management fee math.',
+    ]
+  },
+
+  broker: {
+    label: 'Broker / Team Lead', icon: '💼', tagline: 'Oversee your team, track splits, and stay compliant.',
+    color: '#2A7C6F',
+    keyDocs: ['buyer_rep','listing','psa','commission_agr'],
+    equations: [
+      { label: 'Agent Net After Split', formula: 'Gross Commission × Agent Split % − Transaction Fee − E&O Fee', example: '$12,000 × 70% − $395 − $150 = $7,855 agent net' },
+      { label: 'Broker Keeps', formula: 'Gross Commission × Broker Split %', example: '$12,000 × 30% = $3,600 broker side' },
+      { label: 'Annual GCI per Agent', formula: 'Avg Commission × Avg Deals per Agent per Year', example: '$8,500 × 14 deals = $119,000 avg GCI' },
+      { label: 'Team GCI', formula: 'Sum of all Agent GCIs for the period', example: '5 agents × $119K = $595,000 team GCI' },
+      { label: 'Annual Cap (when reached, agent keeps 100%)', formula: 'Defined in Commission Agreement — e.g. $20,000 to broker', example: 'Agent pays $20K to broker/yr then keeps 100%' },
+      { label: 'Deals to Cap', formula: 'Annual Cap ÷ Avg Broker Cut per Deal', example: '$20,000 ÷ $3,600 = 5.6 → 6 deals to cap' },
+      { label: 'E&O Insurance Cost per Agent', formula: 'Annual E&O Premium ÷ Number of Agents', example: '$6,000 ÷ 10 agents = $600 per agent/yr' },
+      { label: 'Referral Fee Paid Out', formula: 'Gross Commission × Referral % (typically 25%)', example: '$12,000 × 25% = $3,000 referral fee' },
+    ],
+    tips: [
+      '📋 Commission Agreement auto-fills from Deal Setup — set split %, cap, transaction fee and E&O upfront.',
+      '📊 Track each agent\'s GCI vs cap monthly — agents near cap close faster and with less supervision.',
+      '⚖️ Every transaction needs a signed Buyer Rep or Listing Agreement on file — use the app to generate instantly.',
+      '💼 Set the referral fee in Deal Setup → Referral Agreement pre-fills for any agent-to-agent handoff.',
+    ]
+  },
+
+  investor: {
+    label: 'Investor', icon: '📈', tagline: 'Analyze deals, calculate returns, and move fast.',
+    color: '#2A7C6F',
+    keyDocs: ['psa','loi','disclosure','referral'],
+    equations: [
+      { label: 'Cap Rate', formula: 'NOI ÷ Property Value × 100', example: '$26,000 ÷ $300,000 = 8.7% cap rate' },
+      { label: 'Net Operating Income (NOI)', formula: 'Gross Rent − Vacancy − Operating Expenses', example: '$36K − $1.8K − $8.2K = $26,000 NOI' },
+      { label: 'Cash-on-Cash Return', formula: 'Annual Cash Flow ÷ Total Cash Invested × 100', example: '$8,400 ÷ $75,000 = 11.2% CoC return' },
+      { label: 'Annual Cash Flow', formula: 'NOI − Annual Debt Service (mortgage payments)', example: '$26,000 − $17,600 = $8,400 annual cash flow' },
+      { label: 'The 1% Rule Check', formula: 'Monthly Rent ÷ Purchase Price × 100 ≥ 1%', example: '$3,000 ÷ $280,000 = 1.07% ✓ passes' },
+      { label: 'Gross Rent Multiplier (GRM)', formula: 'Purchase Price ÷ Annual Gross Rent', example: '$300,000 ÷ $36,000 = 8.3 GRM (lower = better)' },
+      { label: 'ARV — After Repair Value', formula: 'Comparable Sales Price/SqFt × Subject SqFt', example: '$380/sqft × 1,400sqft = $532,000 ARV' },
+      { label: 'Max Allowable Offer (Fix & Flip)', formula: 'ARV × 70% − Repair Costs', example: '$532K × 70% − $45K = $327,400 max offer' },
+    ],
+    tips: [
+      '📋 Use Deal Setup to fill the Purchase & Sale Contract and Letter of Intent — move fast on deals.',
+      '📊 Run Cap Rate and Cash-on-Cash before submitting any offer — use the equations above.',
+      '⚡ LOI first to lock the deal, then full PSA once terms are agreed — both docs are in Documents.',
+      '🔍 Always get the Disclosure Form from the seller — it reveals deal-breaking issues before closing.',
+    ]
+  },
+
+  dual_agent: {
+    label: 'Dual Agent', icon: '⚖️', tagline: 'Represent both sides — stay transparent and compliant.',
+    color: '#2A7C6F',
+    keyDocs: ['buyer_rep','listing','psa','disclosure'],
+    equations: [
+      { label: 'Full Commission (both sides)', formula: 'Sale Price × Total Commission %', example: '$500,000 × 5% = $25,000 full commission' },
+      { label: 'Your Net — Both Sides', formula: 'Full Commission × Your Split % − Transaction Fee', example: '$25,000 × 80% − $395 = $19,605 net' },
+      { label: 'Buyer Max Offer', formula: 'Pre-Approval − Closing Costs − Down Payment', example: '$520K − $10K − $26K = $484,000 max offer' },
+      { label: 'Seller Net Proceeds', formula: 'Sale Price − Payoff − Full Commission − Seller Closing Costs', example: '$500K − $280K − $25K − $8K = $187,000 net' },
+      { label: 'Midpoint / Fair Value Price', formula: '(Buyer Max + Seller Minimum) ÷ 2', example: '($495K + $485K) ÷ 2 = $490,000 fair midpoint' },
+      { label: 'Earnest Money', formula: 'Sale Price × 1–3%', example: '$490,000 × 2% = $9,800 earnest deposit' },
+      { label: 'Buyer Closing Costs', formula: 'Sale Price × 2–5%', example: '$490,000 × 3% = $14,700 buyer closing costs' },
+      { label: 'Dual Agency Disclosure Requirement', formula: 'Written consent from BOTH buyer AND seller — required in most states before proceeding', example: 'Both sign disclosure form before any negotiation begins' },
+    ],
+    tips: [
+      '⚖️ Dual agency requires written disclosure AND written consent from both buyer and seller — do this first.',
+      '📋 Deal Setup fills the Buyer Rep, Listing Agreement, PSA, and Disclosure all at once — maximum efficiency.',
+      '🤐 As dual agent you cannot share one party\'s confidential info with the other — stay neutral in all negotiations.',
+      '💰 You earn both sides of commission — use the calculator above to show each party their exact net.',
+    ]
+  }
+};
+
+function renderRoleDashboard() {
+  const role = load('redocs_role', null);
+  const el = document.getElementById('role-dashboard');
+  if (!el || !role) { if (el) el.innerHTML = ''; return; }
+
+  const cfg = ROLE_DASHBOARDS[role];
+  if (!cfg) { el.innerHTML = ''; return; }
+
+  // Key docs for this role
+  const keyDocCards = cfg.keyDocs.map(id => {
+    const doc = DOCS.find(d => d.id === id);
+    if (!doc) return '';
+    const access = isDocUnlocked(doc.id);
+    return `<div class="app-doc-card ${access?'unlocked':'locked'}" onclick="clickDoc('${doc.id}')" style="min-width:0;flex:1 1 160px;max-width:220px">
+      <div class="adc-icon" style="font-size:22px">${doc.icon}</div>
+      <div class="adc-name" style="font-size:13px">${doc.name}</div>
+      <div class="adc-status ${access?'unlocked':'locked'}" style="font-size:11px">${access ? '✓ Open' : '🔒 Subscribe'}</div>
+    </div>`;
+  }).join('');
+
+  // Equations for this role
+  const eqRows = cfg.equations.map(eq => `
+    <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--surface)">
+      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:6px">${eq.label}</div>
+      <div style="font-size:12px;color:var(--text);background:var(--gold-lt);border-radius:6px;padding:6px 10px;font-family:monospace;margin-bottom:6px">${eq.formula}</div>
+      <div style="font-size:11px;color:var(--text2)">e.g. ${eq.example}</div>
+    </div>`).join('');
+
+  // Tips
+  const tipRows = cfg.tips.map(t => `<div style="font-size:12px;color:var(--text2);padding:6px 0;border-bottom:1px solid var(--border)">${t}</div>`).join('');
+
+  el.innerHTML = `
+    <div style="background:linear-gradient(135deg,var(--navy) 0%,var(--accent) 100%);border-radius:14px;padding:20px 22px;margin-bottom:22px;color:#fff;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px">${cfg.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:2px">Your Role</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;margin-bottom:2px">${cfg.label}</div>
+        <div style="font-size:13px;opacity:.85">${cfg.tagline}</div>
+      </div>
+    </div>
+
+    ${cfg.keyDocs.length ? `
+    <div style="margin-bottom:22px">
+      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">⭐ Your Key Documents</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">${keyDocCards}</div>
+    </div>` : ''}
+
+    ${cfg.equations.length ? `
+    <div style="margin-bottom:22px">
+      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">🧮 Key Equations for Your Role</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">${eqRows}</div>
+    </div>` : ''}
+
+    ${cfg.tips.length ? `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:22px">
+      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:10px">💡 Quick Tips — ${cfg.label}</div>
+      ${tipRows}
+    </div>` : ''}
+  `;
+}
+
+// ── DOC GRID ────────────────────────────────────────────────────────────
+function isDocUnlocked(id) {
+  return subscribed || unlocked.includes(id);
+}
+function renderDocGrid() {
+  const grid = document.getElementById('app-doc-grid');
+  grid.innerHTML = DOCS.map(doc => {
+    const access = isDocUnlocked(doc.id);
+    const statusLabel = access
+      ? '✓ Unlocked — Fill Out'
+      : (subscribed ? '✓ Included in Subscription' : '🔒 Subscribe to Unlock — $19.99/mo');
+    return `<div class="app-doc-card ${access?'unlocked':'locked'}" onclick="clickDoc('${doc.id}')">
+      <div class="adc-icon">${doc.icon}</div>
+      <div class="adc-name">${doc.name}</div>
+      <div class="adc-desc">${doc.desc}</div>
+      <div class="adc-status ${access?'unlocked':'locked'}">${statusLabel}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── DOC CLICK / UNLOCK ──────────────────────────────────────────────────
+function clickDoc(id) {
+  if (isDocUnlocked(id)) {
+    openEditor(id);
+  } else {
+    pendingUnlockId = id;
+    const doc = DOCS.find(d => d.id === id);
+    document.getElementById('modal-doc-name').textContent = doc.name;
+    document.getElementById('unlock-modal').classList.add('show');
+  }
+}
+function closeModal() {
+  document.getElementById('unlock-modal').classList.remove('show');
+  pendingUnlockId = null;
+}
+function confirmSubscribe(plan) {
+  // In production: call Stripe with plan ('monthly'=$19.99/mo, 'annual'=$29.99/yr)
+  // Demo: instant subscribe
+  subscribed = true;
+  store('redocs_subscribed_' + currentUser.email, true);
+  closeModal();
+  updateSubscriptionUI();
+  renderDocGrid();
+  // If user came via a doc click, open that doc
+  if (pendingUnlockId) {
+    const id = pendingUnlockId;
+    pendingUnlockId = null;
+    openEditor(id);
+  }
+}
+function confirmUnlock() {
+  // In production: call Stripe/PayPal one-time payment here, then unlock on success
+  // Demo: instant unlock
+  if (!pendingUnlockId) return;
+  if (!unlocked.includes(pendingUnlockId)) {
+    unlocked.push(pendingUnlockId);
+    store('redocs_unlocked_' + currentUser.email, unlocked);
+  }
+  const id = pendingUnlockId;
+  closeModal();
+  renderDocGrid();
+  openEditor(id);
+}
+
+// ── EDITOR ──────────────────────────────────────────────────────────────
+function openEditor(id) {
+  const doc = DOCS.find(d => d.id === id);
+  currentDocId = id;
+  document.getElementById('ep-title').textContent = doc.name;
+  const panel = document.getElementById('editor-panel');
+  const dealMap = load('redocs_deal_map', {});
+
+  // Build fields — pre-fill from deal map if available
+  let html = '';
+  doc.fields.forEach(f => {
+    const prefill = dealMap[f.id] || '';
+    const prefillAttr = prefill ? ` value="${prefill.replace(/"/g,'&quot;')}"` : '';
+    const prefillStyle = prefill ? ' style="border-color:var(--navy);background:var(--gold-lt)"' : '';
+    html += `<div class="field-group" style="margin-bottom:12px">
+      <label>${f.label}${prefill ? ' <span style="font-size:10px;color:var(--navy);font-weight:600">✓ auto-filled</span>' : ''}</label>
+      <input type="text" id="epf_${f.id}" placeholder="${f.ph}"${prefillAttr}${prefillStyle} oninput="updatePreview()">
+    </div>`;
+  });
+  document.getElementById('ep-fields').innerHTML = html;
+  panel.classList.add('active');
+  switchTab('docs');
+  updatePreview();
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function closeEditor() {
+  document.getElementById('editor-panel').classList.remove('active');
+  currentDocId = null;
+}
+function getFieldVals() {
+  if (!currentDocId) return {};
+  const doc = DOCS.find(d => d.id === currentDocId);
+  const vals = {};
+  doc.fields.forEach(f => {
+    const el = document.getElementById('epf_' + f.id);
+    vals[f.id] = el ? el.value.trim() : '';
+  });
+  return vals;
+}
+function updatePreview() {
+  if (!currentDocId) return;
+  const doc = DOCS.find(d => d.id === currentDocId);
+  document.getElementById('ep-preview-content').innerHTML = doc.gen(getFieldVals());
+}
+function copyDocEmail() {
+  if (!currentDocId) return;
+  const doc = DOCS.find(d => d.id === currentDocId);
+  const vals = getFieldVals();
+  let text = doc.name.toUpperCase() + '\n' + '='.repeat(doc.name.length) + '\n\n';
+  doc.fields.forEach(f => { text += `${f.label}: ${vals[f.id]||'(not filled)'}\n`; });
+  text += '\n---\nGenerated by RE Docs | redocs.app\nFor informational use — have a licensed attorney review before signing.';
+  try {
+    navigator.clipboard.writeText(text).then(() => showCopyConfirm()).catch(() => fallbackCopy(text));
+  } catch(e) { fallbackCopy(text); }
+}
+function emailDocToCounterparty() {
+  if (!currentDocId) return;
+  const doc  = DOCS.find(d => d.id === currentDocId);
+  const vals = getFieldVals();
+  // Build plain-text body
+  let body = doc.name.toUpperCase() + '\n' + '='.repeat(doc.name.length) + '\n\n';
+  doc.fields.forEach(f => { body += `${f.label}: ${vals[f.id]||'(not filled)'}\n`; });
+  body += '\n---\nGenerated by RE Docs | redocs.app\nFor informational use — please review with a licensed attorney before signing.';
+  // Guess counterparty email from deal data
+  const toEmail = dealData.other_agent || '';
+  const subject = encodeURIComponent(`${doc.name} — ${dealData.address || 'Property'}`);
+  const bodyEnc = encodeURIComponent(body);
+  const mailto  = `mailto:${encodeURIComponent(toEmail)}?subject=${subject}&body=${bodyEnc}`;
+  const a = document.createElement('a');
+  a.href = mailto; a.click();
+}
+
+function openThankYouEmail() {
+  const name   = dealData.buyer || dealData.seller || 'Client';
+  const addr   = dealData.address || 'your new property';
+  const agent  = dealData.agent || (currentUser && (currentUser.name || currentUser.email)) || 'Your Agent';
+  const brok   = dealData.brokerage ? ` — ${dealData.brokerage}` : '';
+  const close  = dealData.close ? ` on ${new Date(dealData.close).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}` : '';
+  const body =
+`Hi ${name},
+
+Congratulations on ${close ? 'the closing' + close : 'reaching this milestone'} at ${addr}!
+
+It was truly a pleasure working with you throughout this process. Whether you're moving in, investing, or moving on — I hope this next chapter brings you everything you're looking for.
+
+Please don't hesitate to reach out anytime you have questions or need referrals for contractors, lenders, or other services. I'm always here to help.
+
+If you have a moment, I'd really appreciate a review — it means the world to small local businesses like mine.
+
+Warmly,
+${agent}${brok}`;
+
+  const subject = encodeURIComponent(`Congratulations! — ${addr}`);
+  const bodyEnc = encodeURIComponent(body);
+  const mailto  = `mailto:?subject=${subject}&body=${bodyEnc}`;
+  const a = document.createElement('a');
+  a.href = mailto; a.click();
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+  document.body.removeChild(ta); showCopyConfirm();
+}
+function showCopyConfirm() {
+  const el = document.getElementById('copy-confirm');
+  el.style.display = 'inline';
+  setTimeout(() => { el.style.display = 'none'; }, 2500);
+}
+
+// ── INIT ────────────────────────────────────────────────────────────────
+if (currentUser) {
+  unlocked = load('redocs_unlocked_' + currentUser.email, []);
+  subscribed = load('redocs_subscribed_' + currentUser.email, false);
+  enterApp();
+}
+</script>
+
+</body></html>
