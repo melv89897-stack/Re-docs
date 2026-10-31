@@ -4,53 +4,53 @@
 
 <style>
 :root {
-  /* Bright teal-green + white — RE Docs Times palette */
-  --navy: #0ea47a;        /* bright teal-green (newspaper masthead) */
-  --navy-dk: #0b8a65;    /* slightly deeper for hover/borders */
-  --gold: #00c896;        /* vivid green accent */
-  --gold-lt: #e6fdf7;     /* very light mint for tinted surfaces */
-  --accent: #00c896;
-  --accent2: #E9A84C;     /* warm gold for contrast CTAs */
-  --bg: #FFFFFF;
-  --surface: #FFFFFF;
-  --border: #d0ede6;
-  --text: #0a2920;
-  --text2: #2d6b5a;
-  --text3: #7ab5a6;
-  --success: #0ea47a;
-  --success-bg: #e6fdf7;
+  /* EXACT RE Docs Times newspaper palette */
+  --navy: #1a5c2e;        /* forest green — nav, masthead, headings */
+  --navy-dk: #133f20;     /* deep green — hover states */
+  --gold: #2d7a45;        /* mid green — buttons, links */
+  --gold-lt: #e8f3ec;     /* light mint — card/section backgrounds */
+  --accent: #2d7a45;
+  --accent2: #2d7a45;     /* also green — no yellow/gold on site */
+  --bg: #faf8f4;          /* warm cream — page background */
+  --surface: #ffffff;     /* white — card surfaces */
+  --border: #c8d4c0;      /* muted green-grey rule lines */
+  --text: #111810;        /* near-black ink */
+  --text2: #2c3328;       /* mid ink */
+  --text3: #8a9984;       /* soft ink */
+  --success: #2d7a45;
+  --success-bg: #e8f3ec;
   /* landing nav dark band */
-  --land-bg: #063324;
-  --land-surface: #0a4533;
-  --land-border: #0f5c42;
-  --land-text: #e0f8f0;
-  --land-text2: #7ad4b8;
+  --land-bg: #0d1f12;
+  --land-surface: #142e1e;
+  --land-border: #1e4029;
+  --land-text: #e8ede4;
+  --land-text2: #8ab89a;
   --radius: 10px;
   --shadow: 0 2px 8px rgba(0,0,0,.07), 0 8px 24px rgba(0,0,0,.05);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #063324;
-    --surface: #0a4533;
-    --border: #0f5c42;
-    --text: #e0f8f0;
-    --text2: #7ad4b8;
-    --text3: #3d9175;
-    --success-bg: #052b1e;
-    --gold-lt: #052b1e;
+    --bg: #0f1510;
+    --surface: #1a2e1f;
+    --border: #2a3526;
+    --text: #e8ede4;
+    --text2: #c4ccbe;
+    --text3: #8a9984;
+    --success-bg: #1a2e1f;
+    --gold-lt: #1a2e1f;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #063324;
-  --surface: #0a4533;
-  --border: #0f5c42;
-  --text: #e0f8f0;
-  --text2: #7ad4b8;
-  --text3: #3d9175;
-  --success-bg: #052b1e;
-  --gold-lt: #052b1e;
+  --bg: #0f1510;
+  --surface: #1a2e1f;
+  --border: #2a3526;
+  --text: #e8ede4;
+  --text2: #c4ccbe;
+  --text3: #8a9984;
+  --success-bg: #1a2e1f;
+  --gold-lt: #1a2e1f;
   color-scheme: dark;
 }
 
@@ -73,8 +73,8 @@ body { padding-inline: 0; }
   align-items: center;
   justify-content: space-between;
   padding: 18px 40px;
-  background: #063324;
-  border-bottom: 1px solid rgba(0,200,150,.2);
+  background: #0d1f12;
+  border-bottom: 1px solid rgba(45,122,69,.3);
 }
 .land-logo {
   font-family: 'Rajdhani', sans-serif;
@@ -83,7 +83,7 @@ body { padding-inline: 0; }
   color: #fff;
   letter-spacing: .5px;
 }
-.land-logo span { color: #00c896; }
+.land-logo span { color: #2d7a45; }
 .land-nav-btns { display: flex; gap: 10px; }
 .btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -93,11 +93,11 @@ body { padding-inline: 0; }
   text-decoration: none;
 }
 .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
-.btn-outline:hover { border-color: #00c896; color: #00c896; }
-.btn-gold { background: #00c896; color: #0a2920; font-weight: 700; }
+.btn-outline:hover { border-color: #2d7a45; color: #2d7a45; }
+.btn-gold { background: #2d7a45; color: #111810; font-weight: 700; }
 .btn-gold:hover { filter: brightness(1.08); }
-.btn-navy { background: #0ea47a; color: #fff; }
-.btn-navy:hover { background: #0b8a65; }
+.btn-navy { background: #1a5c2e; color: #fff; }
+.btn-navy:hover { background: #133f20; }
 .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-ghost:hover { border-color: var(--navy); }
 .btn-sm { padding: 7px 14px; font-size: 13px; }
@@ -105,7 +105,7 @@ body { padding-inline: 0; }
 .btn-full { width: 100%; justify-content: center; }
 
 .land-hero {
-  background: linear-gradient(160deg, #063324 0%, #0a2920 60%, #1a3a30 100%);
+  background: linear-gradient(160deg, #0d2918 0%, #111810 60%, #1a3a30 100%);
   padding: 80px 40px 72px;
   text-align: center;
   position: relative;
@@ -121,7 +121,7 @@ body { padding-inline: 0; }
   display: inline-block;
   font-family: 'Rajdhani', sans-serif;
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: #00c896; background: rgba(46,204,142,.1);
+  color: #2d7a45; background: rgba(46,204,142,.1);
   border: 1px solid rgba(46,204,142,.3);
   border-radius: 20px; padding: 4px 14px; margin-bottom: 22px;
 }
@@ -134,7 +134,7 @@ body { padding-inline: 0; }
   text-wrap: balance;
   margin: 0 0 16px;
 }
-.land-h1 span { color: #00c896; }
+.land-h1 span { color: #2d7a45; }
 .land-sub {
   font-size: clamp(14px, 2vw, 17px);
   color: rgba(255,255,255,.65);
@@ -369,7 +369,7 @@ input:focus { border-color: var(--navy); }
 .app-topbar {
   position: sticky;
   top: env(safe-area-inset-top, 0);
-  background: #063324;
+  background: #0d1f12;
   border-bottom: 1px solid rgba(46,204,142,.18);
   display: flex; align-items: center;
   padding: 0 24px;
@@ -379,7 +379,7 @@ input:focus { border-color: var(--navy); }
   font-family: 'Rajdhani', sans-serif;
   font-size: 19px; font-weight: 700; color: #fff;
 }
-.app-logo span { color: #00c896; }
+.app-logo span { color: #2d7a45; }
 .app-topbar-space { flex: 1; }
 .app-user { font-size: 12px; color: rgba(255,255,255,.4); }
 .app-logout { font-size: 12px; color: rgba(255,255,255,.35); cursor: pointer; padding: 4px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,.12); background: transparent; font-family: inherit; }
@@ -531,7 +531,7 @@ input:focus { border-color: var(--navy); }
   transition: border-color .2s, box-shadow .2s, transform .15s;
 }
 .role-card:hover {
-  border-color: #00c896;
+  border-color: #2d7a45;
   box-shadow: 0 4px 20px rgba(46,204,142,.2);
   transform: translateY(-2px);
 }
@@ -679,7 +679,7 @@ input:focus { border-color: var(--navy); }
       </div>
     </div>
     <!-- Market Ticker -->
-    <div style="background:#0a2920;color:#fff;padding:7px max(16px,env(safe-area-inset-left,0px));display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;white-space:nowrap;letter-spacing:0.04em">
+    <div style="background:#111810;color:#fff;padding:7px max(16px,env(safe-area-inset-left,0px));display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;white-space:nowrap;letter-spacing:0.04em">
       <span style="color:rgba(255,255,255,0.5)">30-YR FIXED</span><span>6.82%</span><span style="color:#5ec87a">▲ 0.04</span>
       <span style="color:rgba(255,255,255,0.5)">MEDIAN PRICE</span><span>$412,000</span><span style="color:#5ec87a">▲ 2.1%</span>
       <span style="color:rgba(255,255,255,0.5)">DAYS ON MARKET</span><span>34</span>
@@ -755,7 +755,7 @@ input:focus { border-color: var(--navy); }
     <div style="font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:8px">Get the RE Docs Times Weekly</div>
     <p style="font-size:14px;font-style:italic;color:rgba(255,255,255,0.75);margin:0 auto 24px;max-width:480px;font-family:'Inter',sans-serif">Market insights, document guides, and exclusive resources — delivered every Friday.</p>
     <form id="nl-form" onsubmit="submitNewsletter(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-      <input type="email" id="nl-email" placeholder="Your email address" required style="flex:1;min-width:200px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;border:none;background:#fff;color:#0a2920;outline:none">
+      <input type="email" id="nl-email" placeholder="Your email address" required style="flex:1;min-width:200px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;border:none;background:#fff;color:#111810;outline:none">
       <button type="submit" style="padding:11px 22px;background:var(--accent2);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Subscribe Free</button>
     </form>
     <div id="nl-confirm" style="display:none;font-size:15px;font-style:italic;color:rgba(255,255,255,0.9);margin-top:16px;font-family:'Rajdhani',sans-serif">✓ You're subscribed. Welcome to the RE Docs Times.</div>
@@ -780,28 +780,28 @@ input:focus { border-color: var(--navy); }
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
 
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
-          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <div style="color:#2d7a45;font-size:16px;margin-bottom:10px">★★★★★</div>
           <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"I close 20+ deals a year and RE Docs saves me at least an hour per transaction. The deal setup auto-fills everything — I never have to type the same address twice."</p>
           <div style="font-size:12px;font-weight:700;color:var(--navy)">Maria T.</div>
           <div style="font-size:11px;color:var(--text3)">Listing Agent · San Diego, CA</div>
         </div>
 
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
-          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <div style="color:#2d7a45;font-size:16px;margin-bottom:10px">★★★★★</div>
           <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"The calendar view is a game-changer. I can see every deadline at a glance, add them to Google Calendar in one click, and my clients never feel like I dropped the ball."</p>
           <div style="font-size:12px;font-weight:700;color:var(--navy)">James K.</div>
           <div style="font-size:11px;color:var(--text3)">Buyer's Agent · Los Angeles, CA</div>
         </div>
 
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
-          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★★</div>
+          <div style="color:#2d7a45;font-size:16px;margin-bottom:10px">★★★★★</div>
           <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"As a property manager with 40+ units, the lease and move-in checklist templates alone are worth the subscription. Clean, professional, and my tenants actually read them."</p>
           <div style="font-size:12px;font-weight:700;color:var(--navy)">Rachel M.</div>
           <div style="font-size:11px;color:var(--text3)">Property Manager · Phoenix, AZ</div>
         </div>
 
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px">
-          <div style="color:#E9A84C;font-size:16px;margin-bottom:10px">★★★★☆</div>
+          <div style="color:#2d7a45;font-size:16px;margin-bottom:10px">★★★★☆</div>
           <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0 0 12px;font-style:italic">"Switched from a $90/month service and honestly I don't miss it. The commission calculator is surprisingly accurate and the role dashboard for brokers is exactly what I needed."</p>
           <div style="font-size:12px;font-weight:700;color:var(--navy)">Derek W.</div>
           <div style="font-size:11px;color:var(--text3)">Broker / Team Lead · Austin, TX</div>
@@ -957,7 +957,7 @@ input:focus { border-color: var(--navy); }
 
     <!-- ── TAB NAV ── -->
     <div style="display:flex;gap:4px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:0">
-      <button id="tab-deal" onclick="switchTab('deal')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:#00c896;border-bottom:3px solid #00c896;margin-bottom:-2px">🏠 Deal Setup</button>
+      <button id="tab-deal" onclick="switchTab('deal')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:#2d7a45;border-bottom:3px solid #2d7a45;margin-bottom:-2px">🏠 Deal Setup</button>
       <button id="tab-docs" onclick="switchTab('docs')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📄 Documents</button>
       <button id="tab-calendar" onclick="switchTab('calendar')" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border:none;background:none;cursor:pointer;color:var(--text3);border-bottom:3px solid transparent;margin-bottom:-2px">📅 Deadlines</button>
     </div>
@@ -1450,8 +1450,8 @@ function switchTab(tab) {
     const btn = document.getElementById('tab-' + t);
     if (!btn) return;
     const active = t === tab;
-    btn.style.color       = active ? '#00c896' : 'var(--text3)';
-    btn.style.borderBottom = active ? '3px solid #00c896' : '3px solid transparent';
+    btn.style.color       = active ? '#2d7a45' : 'var(--text3)';
+    btn.style.borderBottom = active ? '3px solid #2d7a45' : '3px solid transparent';
   });
   if (tab === 'calendar') renderCalendar();
 }
@@ -1507,7 +1507,7 @@ function renderCalendar() {
     const msLeft = deadlineDate - todayDate;
     const daysLeft = msLeft / (1000 * 60 * 60 * 24);
     if (daysLeft < 0)   return { bg: '#fdeaea', border: '#e05b5b', badge: '#e05b5b', label: 'OVERDUE', textColor: '#c0392b' };
-    if (daysLeft <= 3)  return { bg: '#fff4e0', border: '#E9A84C', badge: '#E9A84C', label: 'DUE SOON', textColor: '#b7770a' };
+    if (daysLeft <= 3)  return { bg: '#fff4e0', border: '#2d7a45', badge: '#2d7a45', label: 'DUE SOON', textColor: '#b7770a' };
     if (daysLeft <= 7)  return { bg: '#fffbe6', border: '#f0c040', badge: '#f0c040', label: 'THIS WEEK', textColor: '#8a6800' };
     return { bg: 'var(--surface)', border: 'var(--border)', badge: 'var(--navy)', label: '', textColor: 'var(--text2)' };
   }
@@ -1576,7 +1576,7 @@ function renderCalendar() {
     </div>
     <div style="margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px">
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e05b5b;display:inline-block"></span>Overdue</span>
-      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#E9A84C;display:inline-block"></span>Due soon (≤3 days)</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#2d7a45;display:inline-block"></span>Due soon (≤3 days)</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#f0c040;display:inline-block"></span>This week</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:var(--navy);display:inline-block"></span>On track</span>
     </div>`;
@@ -1604,11 +1604,11 @@ function printCalendar() {
       .card{border:1.5px solid #ccc;border-radius:8px;padding:12px;page-break-inside:avoid}
       .card .icon{font-size:20px;margin-bottom:6px}
       .card .name{font-weight:700;font-size:13px;margin-bottom:4px}
-      .card .date{font-size:12px;font-weight:700;color:#0b8a65;margin-bottom:3px}
+      .card .date{font-size:12px;font-weight:700;color:#133f20;margin-bottom:3px}
       .card .timing{font-size:11px;color:#888;margin-bottom:5px}
       .card .note{font-size:11px;color:#555;line-height:1.5}
       .overdue{background:#fdeaea;border-color:#e05b5b}
-      .soon{background:#fff4e0;border-color:#E9A84C}
+      .soon{background:#fff4e0;border-color:#2d7a45}
       .week{background:#fffbe6;border-color:#f0c040}
       .timeline{margin-top:20px;padding-top:16px;border-top:1px solid #ccc;font-size:12px;color:#555}
       @media print{.no-print{display:none!important}}
@@ -1619,7 +1619,7 @@ function printCalendar() {
     <div class="grid">${grid.innerHTML}</div>
     <div class="timeline">${tline.innerHTML}</div>
     <div class="no-print" style="margin-top:24px;text-align:center">
-      <button onclick="window.print()" style="padding:10px 28px;font-size:14px;background:#0b8a65;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨️ Print</button>
+      <button onclick="window.print()" style="padding:10px 28px;font-size:14px;background:#133f20;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨️ Print</button>
     </div>
   </body></html>`);
   win.document.close();
@@ -1777,7 +1777,7 @@ function getPasswordStrength(pw) {
   if (/[0-9]/.test(pw)) score++;
   if (/[^A-Za-z0-9]/.test(pw)) score++;
   const label = score <= 1 ? 'Weak' : score <= 3 ? 'Fair' : 'Strong';
-  const color = score <= 1 ? '#e05b5b' : score <= 3 ? '#E9A84C' : '#0b8a65';
+  const color = score <= 1 ? '#e05b5b' : score <= 3 ? '#2d7a45' : '#133f20';
   const pct = Math.min(100, score * 20) + '%';
   return { score, label, color, pct };
 }
@@ -1801,7 +1801,7 @@ function checkConfirm() {
   const lbl = document.getElementById('pw-match-label');
   if (!pw2) { lbl.style.display = 'none'; return; }
   lbl.style.display = 'block';
-  if (pw === pw2) { lbl.textContent = '✓ Passwords match'; lbl.style.color = '#0b8a65'; }
+  if (pw === pw2) { lbl.textContent = '✓ Passwords match'; lbl.style.color = '#133f20'; }
   else { lbl.textContent = '✗ Passwords do not match'; lbl.style.color = '#e05b5b'; }
 }
 function togglePw(inputId, btn) {
@@ -1884,7 +1884,7 @@ const ROLE_DASHBOARDS = {
     label: "Buyer's Agent",
     icon: '🏡',
     tagline: "Represent buyers from offer to close — docs, deadlines, and commissions in one place.",
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['buyer_rep','psa','referral','commission_agr'],
     equations: [
       { label: 'Max Offer Price', formula: 'Pre-Approval Limit − Closing Costs − Down Payment', example: '$500K − $10K − $25K = $465K max offer' },
@@ -1906,7 +1906,7 @@ const ROLE_DASHBOARDS = {
 
   listing_agent: {
     label: 'Listing Agent', icon: '🏷', tagline: 'Price it right, market it fast, close with confidence.',
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['listing','psa','disclosure','commission_agr'],
     equations: [
       { label: 'Suggested List Price', formula: 'Average Comp Price/SqFt × Subject SqFt ± Adjustments', example: '$350/sqft × 1,800sqft = $630,000 list price' },
@@ -1928,7 +1928,7 @@ const ROLE_DASHBOARDS = {
 
   property_manager: {
     label: 'Property Manager', icon: '🔑', tagline: 'Leases, move-ins, renewals and maintenance in one workflow.',
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['lease','moveinout','renewal','referral'],
     equations: [
       { label: 'Monthly Rent Range (1% Rule)', formula: 'Property Value × 1%', example: '$300,000 × 1% = $3,000/mo target rent' },
@@ -1950,7 +1950,7 @@ const ROLE_DASHBOARDS = {
 
   broker: {
     label: 'Broker / Team Lead', icon: '💼', tagline: 'Oversee your team, track splits, and stay compliant.',
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['buyer_rep','listing','psa','commission_agr'],
     equations: [
       { label: 'Agent Net After Split', formula: 'Gross Commission × Agent Split % − Transaction Fee − E&O Fee', example: '$12,000 × 70% − $395 − $150 = $7,855 agent net' },
@@ -1972,7 +1972,7 @@ const ROLE_DASHBOARDS = {
 
   investor: {
     label: 'Investor', icon: '📈', tagline: 'Analyze deals, calculate returns, and move fast.',
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['psa','loi','disclosure','referral'],
     equations: [
       { label: 'Cap Rate', formula: 'NOI ÷ Property Value × 100', example: '$26,000 ÷ $300,000 = 8.7% cap rate' },
@@ -1994,7 +1994,7 @@ const ROLE_DASHBOARDS = {
 
   dual_agent: {
     label: 'Dual Agent', icon: '⚖️', tagline: 'Represent both sides — stay transparent and compliant.',
-    color: '#0b8a65',
+    color: '#133f20',
     keyDocs: ['buyer_rep','listing','psa','disclosure'],
     equations: [
       { label: 'Full Commission (both sides)', formula: 'Sale Price × Total Commission %', example: '$500,000 × 5% = $25,000 full commission' },
