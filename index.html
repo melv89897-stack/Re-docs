@@ -1,32 +1,32 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>RE Docs</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap">
 
 <style>
 :root {
-  /* EXACT RE Docs Times newspaper palette */
-  --navy: #1a5c2e;        /* forest green — nav, masthead, headings */
-  --navy-dk: #133f20;     /* deep green — hover states */
-  --gold: #2d7a45;        /* mid green — buttons, links */
-  --gold-lt: #e8f3ec;     /* light mint — card/section backgrounds */
-  --accent: #2d7a45;
-  --accent2: #2d7a45;     /* also green — no yellow/gold on site */
-  --bg: #faf8f4;          /* warm cream — page background */
-  --surface: #ffffff;     /* white — card surfaces */
-  --border: #c8d4c0;      /* muted green-grey rule lines */
-  --text: #111810;        /* near-black ink */
-  --text2: #2c3328;       /* mid ink */
-  --text3: #8a9984;       /* soft ink */
-  --success: #2d7a45;
-  --success-bg: #e8f3ec;
-  /* landing nav dark band */
-  --land-bg: #0d1f12;
-  --land-surface: #142e1e;
+  /* RE Docs — Professional Forest Green + Cream palette */
+  --navy: #1a5c2e;        /* deep forest green — nav, masthead */
+  --navy-dk: #133f20;     /* darker green — hover */
+  --gold: #1a5c2e;        /* primary action green */
+  --gold-lt: #eef5f0;     /* very light green tint */
+  --accent: #1a5c2e;
+  --accent2: #1a5c2e;
+  --featured: #c8a84b;    /* warm antique gold — ONLY for featured/best-value highlight */
+  --bg: #faf8f4;          /* warm cream */
+  --surface: #ffffff;
+  --border: #dde8d8;      /* soft green-grey */
+  --text: #0f1a0d;        /* deep ink */
+  --text2: #374832;       /* mid ink */
+  --text3: #7a8f74;       /* soft ink */
+  --success: #1a5c2e;
+  --success-bg: #eef5f0;
+  --land-bg: #0a1a0f;
+  --land-surface: #112218;
   --land-border: #1e4029;
-  --land-text: #e8ede4;
+  --land-text: #edf2e8;
   --land-text2: #8ab89a;
   --radius: 10px;
-  --shadow: 0 2px 8px rgba(0,0,0,.07), 0 8px 24px rgba(0,0,0,.05);
+  --shadow: 0 2px 12px rgba(0,0,0,.08), 0 8px 28px rgba(0,0,0,.06);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -94,7 +94,7 @@ body { padding-inline: 0; }
 }
 .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
 .btn-outline:hover { border-color: #2d7a45; color: #2d7a45; }
-.btn-gold { background: #1a5c2e; color: #fff; font-weight: 700; border-color: #1a5c2e; }
+.btn-gold { background: #1a5c2e; color: #fff; font-weight: 600; border-color: #1a5c2e; letter-spacing: .02em; }
 .btn-gold:hover { background: #133f20; border-color: #133f20; }
 .btn-navy { background: #1a5c2e; color: #fff; }
 .btn-navy:hover { background: #133f20; }
@@ -126,15 +126,16 @@ body { padding-inline: 0; }
   border-radius: 20px; padding: 4px 14px; margin-bottom: 22px;
 }
 .land-h1 {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(36px, 6vw, 58px);
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 5.5vw, 56px);
+  font-weight: 800;
   color: #fff;
-  line-height: 1.1;
+  line-height: 1.12;
   text-wrap: balance;
   margin: 0 0 16px;
+  letter-spacing: -.5px;
 }
-.land-h1 span { color: #8ab89a; }
+.land-h1 span { color: #c8a84b; }
 .land-sub {
   font-size: clamp(14px, 2vw, 17px);
   color: rgba(255,255,255,.65);
@@ -175,15 +176,16 @@ body { padding-inline: 0; }
   gap: 6px;
 }
 .price-card.featured {
-  border-color: var(--gold);
-  background: var(--gold-lt);
+  border-color: var(--featured);
+  background: #fffdf5;
   position: relative;
+  box-shadow: 0 4px 20px rgba(200,168,75,.15);
 }
 .price-badge {
   position: absolute;
   top: -11px; left: 50%; transform: translateX(-50%);
-  background: var(--gold);
-  color: var(--navy-dk);
+  background: var(--featured);
+  color: #fff;
   font-family: 'Rajdhani', sans-serif;
   font-size: 11px; font-weight: 700; letter-spacing: 1px;
   text-transform: uppercase;
@@ -191,9 +193,9 @@ body { padding-inline: 0; }
   border-radius: 20px;
 }
 .price-num {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 36px; font-weight: 700;
-  color: var(--gold);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 38px; font-weight: 700;
+  color: var(--navy);
   line-height: 1;
 }
 .price-period {
@@ -605,7 +607,7 @@ input:focus { border-color: var(--navy); }
       <div class="price-num" style="color:var(--accent2)">$29.99</div>
       <div class="price-period">/ year</div>
       <div class="price-label" style="color:var(--text2)">All 10 Docs — Save $210 vs Monthly</div>
-      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:#1a5c2e;border-color:#1a5c2e" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
+      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:#1a5c2e;border-color:#1a5c2e;color:#fff" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
     </div>
     <!-- What's included -->
     <div class="price-card" style="text-align:left;max-width:260px;min-width:200px">
@@ -756,7 +758,7 @@ input:focus { border-color: var(--navy); }
     <p style="font-size:14px;font-style:italic;color:rgba(255,255,255,0.75);margin:0 auto 24px;max-width:480px;font-family:'Inter',sans-serif">Market insights, document guides, and exclusive resources — delivered every Friday.</p>
     <form id="nl-form" onsubmit="submitNewsletter(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
       <input type="email" id="nl-email" placeholder="Your email address" required style="flex:1;min-width:200px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;border:none;background:#fff;color:#111810;outline:none">
-      <button type="submit" style="padding:11px 22px;background:var(--accent2);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Subscribe Free</button>
+      <button type="submit" style="padding:11px 22px;background:#1a5c2e;color:#fff;border:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Subscribe Free</button>
     </form>
     <div id="nl-confirm" style="display:none;font-size:15px;font-style:italic;color:rgba(255,255,255,0.9);margin-top:16px;font-family:'Rajdhani',sans-serif">✓ You're subscribed. Welcome to the RE Docs Times.</div>
     <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);margin-top:16px">No spam, ever. Unsubscribe anytime.</div>
@@ -1112,7 +1114,7 @@ input:focus { border-color: var(--navy); }
         <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--accent2)">$29.99<span style="font-size:12px;font-weight:400;color:var(--text3)">/yr</span></div>
       </div>
       <div style="font-size:12px;color:var(--text2);margin-bottom:12px">All 10 docs for a full year — saves you <strong>$210</strong> vs monthly.</div>
-      <button class="btn btn-gold btn-full" style="background:#1a5c2e;border-color:#1a5c2e" onclick="confirmSubscribe('annual')">Subscribe Annual — $29.99/yr →</button>
+      <button class="btn btn-gold btn-full" style="background:#1a5c2e;border-color:#1a5c2e;color:#fff" onclick="confirmSubscribe('annual')">Subscribe Annual — $29.99/yr →</button>
     </div>
 
     <div class="modal-cancel" onclick="closeModal()">Cancel — go back</div>
