@@ -636,32 +636,32 @@ input:focus { border-color: var(--navy); }
     <div class="hero-trust">Free account &nbsp;·&nbsp; $19.99/mo or $29.99/yr &nbsp;·&nbsp; Cancel anytime</div>
   </div>
 
-  <div class="price-strip" style="gap:16px;flex-wrap:wrap;justify-content:center">
+  <div class="price-strip" style="gap:20px;flex-wrap:wrap;justify-content:center;align-items:center">
     <!-- Monthly -->
-    <div class="price-card featured" style="position:relative;min-width:200px">
-      <div class="price-badge">MONTHLY</div>
-      <div class="price-num">$19.99</div>
-      <div class="price-period">/ month</div>
-      <div class="price-label">All 10 Docs — Unlimited — Cancel Anytime</div>
-      <button class="btn btn-navy btn-full" style="margin-top:14px;font-size:13px" onclick="showAuth('signup')">Get Monthly →</button>
+    <div style="position:relative;background:#fff;border:1.5px solid #dde8d8;border-radius:14px;padding:28px 32px;text-align:center;min-width:210px;flex:1;max-width:260px;display:flex;flex-direction:column;gap:8px">
+      <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#1a5c2e;color:#fff;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:40px;white-space:nowrap">MONTHLY</div>
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:42px;font-weight:700;color:#1a5c2e;line-height:1">$19.99</div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;color:#7a8f74">/ month</div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;color:#374832;line-height:1.4">All 10 Docs — Unlimited — Cancel Anytime</div>
+      <button class="btn btn-full" style="margin-top:12px;font-size:13px;background:#1a5c2e;color:#fff;border-color:#1a5c2e" onclick="showAuth('signup')">Get Monthly →</button>
     </div>
-    <!-- Annual -->
-    <div class="price-card featured" style="position:relative;min-width:200px;border-color:var(--accent2);background:linear-gradient(135deg,var(--gold-lt),#fff)">
-      <div class="price-badge" style="background:#1a5c2e;color:#fff">BEST VALUE</div>
-      <div class="price-num" style="color:var(--accent2)">$29.99</div>
-      <div class="price-period">/ year</div>
-      <div class="price-label" style="color:var(--text2)">All 10 Docs — Save $210 vs Monthly</div>
-      <button class="btn btn-gold btn-full" style="margin-top:14px;font-size:13px;background:#1a5c2e;border-color:#1a5c2e;color:#fff" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
+    <!-- Annual — BEST VALUE -->
+    <div style="position:relative;background:#fff;border:2px solid #c8a84b;border-radius:14px;padding:28px 32px;text-align:center;min-width:210px;flex:1;max-width:260px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 32px rgba(200,168,75,.2),0 2px 8px rgba(0,0,0,.06);transform:translateY(-6px)">
+      <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c8a84b,#a8882e);color:#fff;font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:40px;white-space:nowrap">BEST VALUE</div>
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:42px;font-weight:700;color:#1a5c2e;line-height:1">$29.99</div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;color:#7a8f74">/ year</div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;color:#374832;line-height:1.4">All 10 Docs — Save $210 vs Monthly</div>
+      <button class="btn btn-full" style="margin-top:12px;font-size:13px;background:#c8a84b;color:#fff;border-color:#c8a84b" onclick="showAuth('signup')">Get Annual — Best Deal →</button>
     </div>
     <!-- What's included -->
-    <div class="price-card" style="text-align:left;max-width:260px;min-width:200px">
-      <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Both plans include:</div>
-      <div style="font-size:12px;color:var(--text2);display:flex;flex-direction:column;gap:6px">
-        <span>✓ All 10 professional contract templates</span>
-        <span>✓ Live fill-as-you-type preview</span>
-        <span>✓ Print-ready PDF format</span>
-        <span>✓ Copy to email your client instantly</span>
-        <span>✓ Free account — pay only when you subscribe</span>
+    <div style="background:#fff;border:1.5px solid #dde8d8;border-radius:14px;padding:28px 24px;text-align:left;min-width:200px;flex:1;max-width:260px">
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#0f1a0d;margin-bottom:14px;letter-spacing:.05em;text-transform:uppercase">Both plans include:</div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;color:#374832;display:flex;flex-direction:column;gap:9px;line-height:1.4">
+        <span style="display:flex;gap:8px;align-items:flex-start"><span style="color:#1a5c2e;font-weight:700;flex-shrink:0">✓</span> All 10 professional contract templates</span>
+        <span style="display:flex;gap:8px;align-items:flex-start"><span style="color:#1a5c2e;font-weight:700;flex-shrink:0">✓</span> Live fill-as-you-type preview</span>
+        <span style="display:flex;gap:8px;align-items:flex-start"><span style="color:#1a5c2e;font-weight:700;flex-shrink:0">✓</span> Print-ready PDF format</span>
+        <span style="display:flex;gap:8px;align-items:flex-start"><span style="color:#1a5c2e;font-weight:700;flex-shrink:0">✓</span> Copy to email your client instantly</span>
+        <span style="display:flex;gap:8px;align-items:flex-start"><span style="color:#1a5c2e;font-weight:700;flex-shrink:0">✓</span> Free account — pay only when you subscribe</span>
       </div>
     </div>
   </div>
